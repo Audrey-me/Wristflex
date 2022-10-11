@@ -1,11 +1,11 @@
 import React from 'react'
-import Featured from '../components/Featured'
-import Festivalsale from '../components/Festivalsale'
-import Filter from '../components/Filter'
-import Newproduct from '../components/Newproduct'
-import Products from '../components/Products'
-import Shopbycategories from '../components/Shopbycategories'
-import SpecialProduct from '../components/SpecialProduct'
+import Featured from '../Atoms/Featured'
+import Festivalsale from '../Atoms/Festivalsale'
+import Filter from '../Atoms/Filter'
+import Newproduct from '../Atoms/Newproduct'
+import Products from '../Atoms/Products'
+import Shopbycategories from '../Atoms/Shopbycategories'
+import SpecialProduct from '../Atoms/SpecialProduct'
 import {watch} from '../data'
 
 

@@ -1,21 +1,20 @@
-import React from "react";
-import { newproducts } from "../data";
+import React from 'react'
 import { AiFillStar } from "react-icons/ai";
+import { specialproducts } from '../../../data';
 
-
-const Newproduct = () => {
+const SpecialProduct = () => {
   return (
     <div className="lg:w-[17.5rem] border-separate mt-4 border-spacing-4 border">
       <div className="bg-accent/20">
         <tr>
-          <th className="font-[100] text-[16px]">New Products</th>
+          <th className="font-[100] text-[16px]">Special Products</th>
         </tr>
       </div>
       <div className="mx-auto">
-        {newproducts.map((items, index) => {
+        {specialproducts.map((items, index) => {
           return (
             <div className="flex mx-2 gap-4 mt-4" key={index}>
-              <div className="w-20 mb-2 ">
+              <div className="w-20 mb-2">
                 <img src={items.image.type} alt="" />
               </div>
               <div className="leading-7">
@@ -26,7 +25,7 @@ const Newproduct = () => {
                   </div>
                   <div>{items.price}</div>
                 </div>
-                <div className="flex text-gray-400">
+                <div className="flex text-[#fec42d]">
                   <AiFillStar />
                   <AiFillStar />
                   <AiFillStar />
@@ -39,7 +38,7 @@ const Newproduct = () => {
         })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Newproduct;
+export default SpecialProduct
