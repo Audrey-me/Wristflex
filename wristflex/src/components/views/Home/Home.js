@@ -26,6 +26,7 @@ export default function Home() {
                 <img className='about-us-image' src='images/about.webp' />
                   </div>
                 <div className="col-md-7 padding-left-20">
+                  <div className='space-contanier'>
                 <h1>About Us</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
       labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus commodo viverra maecenas accumsan lacus </p> 
@@ -33,6 +34,7 @@ export default function Home() {
     <p>el facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse 
     ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
     <button className='flash-button style-btn'>READ MORE</button>
+                 </div>
                  </div>
         </div>
         </div>

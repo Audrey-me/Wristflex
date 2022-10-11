@@ -46,7 +46,9 @@ export default function Navbar({ setInner }) {
               </h1>
             </div>
             <div className="mega-menu">
-              <ul  className="top-menu onscroll-menu">
+              <ul  className={`${
+          bg ? " top-menu onscroll-menu" : "top-menu noscroll-menu"
+        }`}>
                 <li>Home</li>
                 <Link to="/collections" >
                   <li>Collections</li>
@@ -60,11 +62,11 @@ export default function Navbar({ setInner }) {
                 onClick={() => setInner("false")}
                 icon="bi:cart"
                 className={`${
-                  bg ? "icons onscroll-menu" : "icons top-menu"
+                  bg ? "icons onscroll-icon" : "icons noscroll-icon"
                 }`} />
             
               <Icon icon="bi:person-fill"className={`${
-          bg ? "icons onscroll-menu" : "icons top-menu"
+          bg ? "icons onscroll-icon" : "icons noscroll-icon"
         }`} />
             </div>
           </div>

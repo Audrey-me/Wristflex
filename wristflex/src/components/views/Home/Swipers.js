@@ -38,8 +38,9 @@ export default function Swipers() {
        <div className=' flash-contanier ' >
         <div className='flash-title'>Flash Sale</div>
         <h3 className='flash-heading'>The Perfect Gift!</h3>
-        <div className='flash-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <span className='break-class'>ed do eiusmod tempor</span> 
-        <br /> <span className='break-class'>incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam.</span></div>
+        <div className='flash-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        <span className='break-class'>ed do eiusmod tempor</span> 
+        <br /> <span className='break-class'>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</span></div>
         <button className='flash-button'>SHOP NOW</button>
        </div>
        

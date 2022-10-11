@@ -92,6 +92,8 @@ font-family: Poppins, Arial, sans-serif;font-size: 18px;font-weight: 300;line-he
 .about-us-image{border-style: none; max-width: 600px;vertical-align: top; width: 100%;}
 .padding-left-20{padding: 0 50px;}
 .padding-left-20 p{font-size: 16px;}
+.space-contanier{margin-left: 20px;}
+.space-contanier h1{vertical-align: middle;}
 /* ===== OUR SERVICES ===== */
 body .services{ display: flex; flex-wrap: wrap;justify-content: center;max-width: 1392px;margin: 0 auto;padding-left: 15px;padding-right: 15px;}
 body .left-content{color: #666666; padding-left: 70px;margin-top: 30px;}
@@ -130,7 +132,7 @@ body .style-btn{cursor: pointer;display: inline-flex; justify-content: center;al
 .swiper-slide-active .flash-text{ animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both;animation-name: fadeDown;animation-delay: .5s;}
 .swiper-slide-active .flash-contanier{ animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both;animation-name: fadeDown;animation-delay: .5s;}
 .flash-contanier,.flash-contanier2{max-width: 1420px; margin:auto;}
-.swiper-pagination-bullet{height: 13px!important; width: 13px!important;}
+.swiper-pagination-bullet{height: 8px!important; width: 8px!important;}
 .flash-button:hover{background-color: #232323; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;}
 @keyframes fadeDown{
     from{
@@ -197,15 +199,21 @@ body .header-top {position: relative;text-align: center;z-index: 1; padding: 8px
 body .page-width {display: flex;justify-content: space-between;align-items: center;}
 body .page-width div{max-width: 1392px;display: flex;justify-content: space-between;align-items: center;margin: 0 auto;padding-left: 15px;padding-right: 15px; border: 1px solid transparent ;}
 body .top-menu{display: inline-block;vertical-align: middle;position: relative;}
-body .top-menu li{color: #999999; list-style-type: none;cursor: pointer; display: inline-block;vertical-align: middle;position: relative;padding-right: 60px;} 
-body .top-menu li:hover{color: #ffffff!important;}
+body .noscroll-menu li{color: #999999; list-style-type: none;cursor: pointer; display: inline-block;vertical-align: middle;position: relative;padding-right: 60px;} 
+body .noscroll-menu li:hover{color: #ffffff!important;}
 body .header-logo-section {position: relative;}
 body .icon-header{margin-top: -15px!important;}
 body .icons{font-size: 30px; margin-right: 40px;line-height: 1; cursor: pointer;}
-body .icons:hover,.top-menu li:hover{color:#ffffff}
+body .onscroll-icon{color: #222222; }
+body .onscroll-icon:hover{color: #a67a68!important;}
+body .noscroll-icon{color: #999999;  }
+body .noscroll-icon:hover{color: #ffffff!important;}
 body .hamburger-menu{display: none}
 body .logo-header{color: #ffffff;}
 body .visible-onscroll{background-color: #ffffff;position: fixed;z-index: 20;  transition: all .8s ease-in;width: 100%;color: #222222!important;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+body .onscroll-menu li{color: #222222; list-style-type: none;cursor: pointer; display: inline-block;vertical-align: middle;position: relative;padding-right: 60px;} 
+body .onscroll-menu li:hover{color: #a67a68!important;}
+
 /* body .onscroll-menu li{color: #222222;} */
 /* body .onscroll-menu li:hover{color: #a67a68!important;} */
 body .menu-contanier{display: none;}
@@ -383,7 +391,7 @@ body .services-contanier{margin: 0px;}
 .flash-text{display: none;}
 .flash-heading{font-size: 15px;}
 .flash-button{font-size: 8px; padding: 5px 8px;}
-.flash-title{padding: 8px 8px; line-height: 8px; margin-bottom: 5px;}
+.flash-title{padding: 8px 8px; line-height: 8px; margin-bottom: 5px;margin-top: 20px;}
 .flash-button{font-size: 8px;letter-spacing: .5px;font-weight: 400;text-transform: uppercase;line-height: 10px;}
 .padding-left-20 h1{font-size: 18px;}
 .padding-left-20 p{font-size: 14px;}
@@ -404,7 +412,7 @@ body .sub-text{padding: 5px;}
 .swiper-slide-active .flash-contanier2{ animation-name: fadeDown5;}
 .swiper-slide-active .flash-heading{ animation-name: fadeDown5;}
 .swiper-slide-active .flash-text{ animation-name: fadeDown5;}
-.swiper-slide-active .flash-contanier{ animation-name: fadeDown5;}
+.swiper-slide-active .flash-contanier{ animation-name: fadeDown5; margin-left: 15px;}
 .flash-heading{font-size: 9px;}
 .flash-text{margin-bottom: 0px;line-height: 0;}
 .flash-button{margin-top: 0;}
