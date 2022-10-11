@@ -9,7 +9,7 @@ export default function Navbar({ setInner }) {
   const [menu, setMenu] = useState("false");
   useEffect(() => {
     window.addEventListener("click", () => {
-      setInner("");
+      
     });
     window.addEventListener("scroll", () => {
       return window.scrollY > 50 ? setBg(true) : setBg(false);
@@ -26,7 +26,7 @@ export default function Navbar({ setInner }) {
     <>
       <div
         className={`${
-          bg ? "header-top  visible-onscroll" : "header-top  site-header-inner"
+          bg ? "header-top  visible-onscroll " : "header-top  site-header-inner"
         }`}
       >
         <div className="row ">
@@ -46,9 +46,9 @@ export default function Navbar({ setInner }) {
               </h1>
             </div>
             <div className="mega-menu">
-              <ul className="top-menu">
+              <ul  className="top-menu onscroll-menu">
                 <li>Home</li>
-                <Link to="/collections">
+                <Link to="/collections" >
                   <li>Collections</li>
                 </Link>
                 <li>About Us</li>
@@ -59,9 +59,13 @@ export default function Navbar({ setInner }) {
               <Icon
                 onClick={() => setInner("false")}
                 icon="bi:cart"
-                className="icons"
-              />
-              <Icon icon="bi:person-fill" className="icons" />
+                className={`${
+                  bg ? "icons onscroll-menu" : "icons top-menu"
+                }`} />
+            
+              <Icon icon="bi:person-fill"className={`${
+          bg ? "icons onscroll-menu" : "icons top-menu"
+        }`} />
             </div>
           </div>
         </div>
@@ -72,7 +76,7 @@ export default function Navbar({ setInner }) {
           <Icon
             icon="charm:menu-hamburger"
             style={{ paddingLeft: "20px", fontSize: "50px" }}
-            className="icons "
+            className="icons  "
           />
         </div>
         <div id="_desktop_logo" className="header-logo-section ">
@@ -91,11 +95,11 @@ export default function Navbar({ setInner }) {
         </div>
 
         <div className="icon-header">
-          <Icon icon="bi:cart" className="icons" />
+          <Icon icon="bi:cart"  className="icons  onscroll-icons"/>
           <Icon
             onClick={() => setInner("false")}
             icon="bi:person-fill"
-            className="icons"
+            className="icons  onscroll-icons"
           />
         </div>
       </div>
@@ -107,11 +111,11 @@ export default function Navbar({ setInner }) {
             : "menu-contanier visible-menu"
         }`}
       >
-        <Icon
+        <Icon style={{position:"absolute", top:"30", right:"10"}}
           onClick={() => setMenu("false")}
           icon="carbon:close"
-          className="close-icon"
-        />
+          className="icons"/>
+      
         <ul>
           <li>Home</li>
           <li>About Us</li>

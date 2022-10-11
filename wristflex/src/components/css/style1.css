@@ -17,7 +17,7 @@ h1{
     font-family: Roboto;
     margin: 0 0 30px;
 }
-p{color: #666;
+p{color: #666!important;
     font-size: 14px;
     font-weight: 400;}
 
@@ -98,13 +98,9 @@ body .left-content{color: #666666; padding-left: 70px;margin-top: 30px;}
 body .left-content h1{color: #000000;padding-bottom: 10px;font-size: 40px;}
 body .services-contanier{margin: 40px;}
 .padding-left-25{padding: 0 50px;}
-
 .padding-left-25 p{font-size: 16px;}
-body .big-sale-img{    border-style: none;
-    height: 100%;
-    max-width: 100%;
-    vertical-align: top;
-}
+body .big-sale-img{border-style: none;max-width: 400px; vertical-align: top;width: 100%;margin: 0 auto}
+body .mini-services{margin-left: 50px;}
 body .flex-sub-items{display: flex; }
 body .flex-sub-items h4{font-size:18px;padding-bottom: 4px; color: #232323;}
 body .sub-text{padding: 15px; font-size: 14px; color: #666;}
@@ -201,16 +197,21 @@ body .header-top {position: relative;text-align: center;z-index: 1; padding: 8px
 body .page-width {display: flex;justify-content: space-between;align-items: center;}
 body .page-width div{max-width: 1392px;display: flex;justify-content: space-between;align-items: center;margin: 0 auto;padding-left: 15px;padding-right: 15px; border: 1px solid transparent ;}
 body .top-menu{display: inline-block;vertical-align: middle;position: relative;}
-body .top-menu li{list-style-type: none;cursor: pointer; display: inline-block;vertical-align: middle;position: relative;padding-right: 60px;} 
+body .top-menu li{color: #999999; list-style-type: none;cursor: pointer; display: inline-block;vertical-align: middle;position: relative;padding-right: 60px;} 
+body .top-menu li:hover{color: #ffffff!important;}
 body .header-logo-section {position: relative;}
 body .icon-header{margin-top: -15px!important;}
 body .icons{font-size: 30px; margin-right: 40px;line-height: 1; cursor: pointer;}
 body .icons:hover,.top-menu li:hover{color:#ffffff}
 body .hamburger-menu{display: none}
 body .logo-header{color: #ffffff;}
-body .visible-onscroll{background-color: #ffffff;position: fixed;z-index: 20;  transition: all .8s ease-in;width: 100%;color: #222222;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+body .visible-onscroll{background-color: #ffffff;position: fixed;z-index: 20;  transition: all .8s ease-in;width: 100%;color: #222222!important;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+/* body .onscroll-menu li{color: #222222;} */
+/* body .onscroll-menu li:hover{color: #a67a68!important;} */
 body .menu-contanier{display: none;}
 body .logo1{color: #222222;}
+body .onscroll-icons{color:#222222;}
+body .onscroll-icons:hover{color:#a67a68!important;}
 
 /* NAV ONSCROLL */
 
@@ -280,7 +281,7 @@ body .theme-button {cursor: pointer;
   @media screen and (max-width:1200px){
     body .left-content{text-align: center;}
     body .left-content p{padding: 0 10px;}
-    body .big-sale-img{margin-top: 60px; width: 100%;}
+    /* body .big-sale-img{margin-top: 60px; width: 100%; max-width: 990px;} */
     body .right-content{margin: 0 auto; width: 100%;}
     body .flex-right {max-width: 100%; margin: 0 auto;}
     /* .flash-contanier,.flash-contanier2{width: 100%;max-width: 300px;} */
@@ -328,6 +329,7 @@ body .flex-right{width: 80%;}
 .swiper-slide-active .flash-text{ animation-name: fadeDown4;}
 .swiper-slide-active .flash-contanier{ animation-name: fadeDown4;}
 .padding-left-20{text-align: center;padding-top: 45px;}
+ body .big-sale-img{max-width: 990px;} 
 
 /* NAV SMALL DEVICE */
 body .page-width {display: none}
@@ -373,6 +375,7 @@ body .footer-mobile-buttons input{padding: 10px;}
 body .footer-mobile-buttons button{padding: 10px 30px;}
 body .icons:nth-child(1){  margin-right: 12px;}
 body .login-contanier1{right: 0px;}
+body .services-contanier{margin: 0px;}
     
 }
 
