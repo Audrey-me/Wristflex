@@ -1,5 +1,5 @@
 import { Pagination, Navigation } from "swiper";
-import { products } from "../data";
+import { products } from "../../../data";
 import { AiFillStar } from "react-icons/ai";
 
 // import swiper react components
