@@ -4,18 +4,19 @@ import Festivalsale from '../Atoms/Festivalsale'
 import Filter from '../Atoms/Filter'
 import Newproduct from '../Atoms/Newproduct'
 import Products from '../Atoms/Products'
-import Shopbycategories from '../Atoms/Shopbycategories'
 import SpecialProduct from '../Atoms/SpecialProduct'
-import {watch} from '../data'
-
+import {watch} from '../../../data'
+import Navbar1 from '../../partials/Navbar1'
 
 const Collections = () => {
   const {heading,subtitle1, subtitle2,image} = watch
   return (
+    <>
+    <Navbar1/>
     <div className='container mx-auto mt-20'>
+      
       <div className='flex lg:gap-[2rem] lg:flex-row flex-col-reverse '>
         <div>
-          <Shopbycategories />
           <Filter />
           <Newproduct/>
           <Festivalsale />
@@ -31,6 +32,7 @@ const Collections = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

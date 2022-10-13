@@ -1,5 +1,5 @@
 import React from 'react'
-import Featuredsales from '../images/festival.png'
+import Featuredsales from '../../partials/images/festival.png'
 
 
 const Festivalsale = () => {

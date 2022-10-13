@@ -1,4 +1,4 @@
-import Bestsallar from './components/partials/images/categorybanner.webp'
+import Bestsallar from './components/partials/images/SpecialProducts1.webp'
 import Product1 from './components/partials/images/product1.webp'
 import Product2 from './components/partials/images/product2.webp'
 import Product3 from './components/partials/images/product3.webp'

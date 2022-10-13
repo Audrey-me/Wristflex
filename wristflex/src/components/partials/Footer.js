@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import {IoLocationOutline,IoCallOutline} from "react-icons/io5";
 import {AiOutlineMail,AiOutlineDown} from "react-icons/ai"
 import { FaFacebookF,FaTwitter,FaInstagram,FaLinkedinIn} from "react-icons/fa";

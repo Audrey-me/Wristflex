@@ -1,5 +1,4 @@
 import React from "react";
-import { Select } from "@vechaiui/react";
 
 
 const Featured = () => {
@@ -19,7 +18,7 @@ const Featured = () => {
         </div>
         <div className="items-center hidden lg:flex ">
           <h1 className="w-20 pl-4 text-[15px]">Sort By</h1>
-          <Select
+          <select
             placeholder="Featured"
             className="pr-[12rem] text-[15px] text-accent/60 mr-4 bg-white/50 border border-solid border-accent pl-[1rem] py-2 rounded-full"
           >
@@ -27,7 +26,7 @@ const Featured = () => {
             <option className="text-black">Price Low to High</option>
             <option className="text-black">Date Old to New</option>
             <option className="text-black">Date New to Old</option>
-          </Select>
+          </select>
         </div>
       </div>
     </div>
