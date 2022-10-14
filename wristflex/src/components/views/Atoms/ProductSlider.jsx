@@ -32,7 +32,7 @@ const ProductSlider = () => {
                 return (
                   <div key={index} className='w-full max-w-[290px] h-[380px] text-left'>
                     <div className="mb-2 relative className='border hover:border-accent rounded-[18px] w-full max-w-[285px] max-h-[292px] flex items-center justify-center  transition">
-                      {/* <img src={image.type} alt="images" /> */}
+                      <img src={image.type} alt="images" />
                       <div className="flex absolute text-[#fec42d] bottom-1 lg:right-[56px] right-[22px] justify-center items-center cursor-pointer">
                         <AiFillStar />
                         <AiFillStar />
