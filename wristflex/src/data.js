@@ -72,52 +72,52 @@ export const products = {
           price: "$80.00",
           oldprice: "$85.00",
         },
+      ],
+    },
+    {
+      productList: [
         {
-          productList: [
-            {
-              image: <SpecialProducts1 />,
-              title: "Around Unisex Watch",
-              price: "$80.00",
-              oldprice: "$85.00",
-            },
-            {
-              image: <SpecialProducts2 />,
-              title: "Around Unisex Watch",
-              price: "$80.00",
-            },
-            {
-              image: <SpecialProducts3 />,
-              title: "Around Unisex Watch",
-              price: "$80.00",
-            },
-            {
-              image: <Product10 />,
-              title: "Around Unisex Watch",
-              price: "$80.00",
-              oldprice: "$60.00",
-            },
-            {
-              image: <Newproduct3 />,
-              title: "Around Unisex Watch",
-              price: "$80.00",
-            },
-            {
-              image: <Product9 />,
-              title: "Around Unisex Watch",
-              price: "$80.00",
-            },
-            {
-              image: <Newproduct2 />,
-              title: "Around Unisex Watch",
-              price: "$80.00",
-            },
-            {
-              image: <Newproduct1 />,
-              title: "Around Unisex Watch",
-              price: "$80.00",
-              oldprice: "$85.00",
-            },
-          ],
+          image: <SpecialProducts1 />,
+          title: "Around Unisex Watch",
+          price: "$80.00",
+          oldprice: "$85.00",
+        },
+        {
+          image: <SpecialProducts2 />,
+          title: "Around Unisex Watch",
+          price: "$80.00",
+        },
+        {
+          image: <SpecialProducts3 />,
+          title: "Around Unisex Watch",
+          price: "$80.00",
+        },
+        {
+          image: <Product10 />,
+          title: "Around Unisex Watch",
+          price: "$80.00",
+          oldprice: "$60.00",
+        },
+        {
+          image: <Newproduct3 />,
+          title: "Around Unisex Watch",
+          price: "$80.00",
+        },
+        {
+          image: <Product9 />,
+          title: "Around Unisex Watch",
+          price: "$80.00",
+        },
+        {
+          image: <Newproduct2 />,
+          title: "Around Unisex Watch",
+          price: "$80.00",
+        },
+        {
+          image: <Newproduct1 />,
+          title: "Around Unisex Watch",
+          price: "$80.00",
+          oldprice: "$85.00",
         },
       ],
     },
