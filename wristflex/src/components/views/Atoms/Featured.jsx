@@ -20,7 +20,7 @@ const Featured = () => {
           <h1 className="w-20 pl-4 text-[15px]">Sort By</h1>
           <select
             placeholder="Featured"
-            className="pr-[12rem] text-[15px] text-accent/60 mr-4 bg-white/50 border border-solid border-accent pl-[1rem] py-2 rounded-full"
+            className="pr-[8rem] text-[15px] text-accent/60 mr-4 bg-white/50 border border-solid border-accent pl-[1rem] py-2 rounded-full"
           >
             <option className="text-black">Price High to Low</option>
             <option className="text-black">Price Low to High</option>
