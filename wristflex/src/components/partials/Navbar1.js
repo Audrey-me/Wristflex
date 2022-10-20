@@ -26,7 +26,7 @@ export default function Navbar({ setInner }) {
     <>
       <div
         className={`${
-          bg ? "header-top  visible-onscroll " : "header-top  site-header-inner"
+          bg ? "header-top " : "header-top  site-header-inner bg-white"
         }`}
       >
         <div className="row ">
