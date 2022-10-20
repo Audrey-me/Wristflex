@@ -3,8 +3,8 @@ import Footer from "../../partials/Footer"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Swipers from './Swipers';
 import Navbar from '../../partials/Navbar';
- import Registration  from '../Registration/Registration';  
-
+import Registration  from '../Registration/Registration';  
+import {ImQuotesLeft} from "react-icons/im";
 export default function Home() {
   const[inner ,setInner] = useState("false")
 
@@ -91,6 +91,7 @@ export default function Home() {
         
       </div>
   </div>
+
   {/* Services session */}
   <div className='contanier services-contanier'>
       <div className='row services'>
@@ -99,9 +100,7 @@ export default function Home() {
           <h1 >Our Services</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
       labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus commodo viverra maecenas accumsan lacus </p> 
-    
-   
-        </div>
+     </div>
         <div className='row mini-services'>
           <div className=' col-md-6 col-sm-6 col-xs-6 flex-sub-items'>
             <div className='sub-image'>
@@ -159,10 +158,13 @@ export default function Home() {
 {/* TESTIMONIAL */}
 <section className='testimonial'>
 <div className='testimonial-contanier monial-body'>
-  <div className='testimonial-header'>
-  <h1>Our Clients Say</h1>
+  <h1 style={{textAlign:"center"}}className='testimonial-header-text'>Our Clients Say</h1>
+  <ImQuotesLeft style={{textAlign:"center", fontSize:"40px"}} />
 
-  </div>
+  
+
+
+  
 </div>
 </section>
 

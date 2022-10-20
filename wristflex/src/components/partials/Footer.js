@@ -19,9 +19,9 @@ export default function Footer() {
             <div className='footer-item'>
                 <h2 className='footer-item-header'>Store Information</h2>
                 <ul className='footer-sub-menus child1'>
-                    <li><span><IoLocationOutline style={{paddingTop:"10px"}}/></span>4005, silver business point India</li>
-                    <li><span><IoCallOutline style={{paddingTop:"10px"}}/></span>9988776655</li>
-                    <li><span><AiOutlineMail style={{paddingTop:"10px"}}/></span>info@example.com</li>
+                    <li><span><IoLocationOutline style={{margin: "10px auto",verticalAlign: "middle"}}/></span>4005, silver business point India</li>
+                    <li><span><IoCallOutline style={{margin: "10px auto",verticalAlign: "middle"}}/></span>9988776655</li>
+                    <li><span><AiOutlineMail style={{margin: "10px auto",verticalAlign: "middle"}}/></span>info@example.com</li>
                     
                 </ul>
             </div>
@@ -98,9 +98,9 @@ export default function Footer() {
            <div><h2>Store Information </h2> </div>
            <div><AiOutlineDown onClick={btnToggle}/></div>
            <ul className={show}>
-         <li><span><IoLocationOutline style={{paddingTop:"10px"}}/></span>4005, silver business point India</li>
-        <li><span><IoCallOutline style={{paddingTop:"10px"}}/></span>9988776655</li>
-         <li><span><AiOutlineMail style={{paddingTop:"10px"}}/></span>info@example.com</li>
+         <li><span><IoLocationOutline style={{margin: "10px auto",verticalAlign: "middle"}}/></span>4005, silver business point India</li>
+        <li><span><IoCallOutline style={{margin: "10px auto",verticalAlign: "middle"}}/></span>9988776655</li>
+         <li><span><AiOutlineMail style={{margin: "10px auto",verticalAlign: "middle"}}/></span>info@example.com</li>
         </ul>
         </div>
 

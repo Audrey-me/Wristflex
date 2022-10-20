@@ -211,14 +211,12 @@ body .noscroll-icon{color: #999999;  }
 body .noscroll-icon:hover{color: #ffffff!important;}
 body .hamburger-menu{display: none}
 body .logo-header{color: #ffffff; font-size: 30px;}
-body .visible-onscroll{background-color: #ffffff;position: fixed;z-index: 20;  transition: all .8s ease-in;width: 100%;color: #222222!important;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+body .visible-onscroll{padding: 0; background-color: #ffffff;position: fixed;z-index: 20;  transition: all .8s ease-in;width: 100%;color: #222222!important;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
 body .onscroll-menu li{color: #222222; list-style-type: none;cursor: pointer; display: inline-block;vertical-align: middle;position: relative;padding-right: 60px;} 
 body .onscroll-menu li:hover{color: #a67a68!important;}
 body .bg-white{background-color: #ffffff; border-bottom: .3px solid #999999; }
 body .bg-white li{color: #222222!important;}
 body .bg-white li:hover{color:#a67a68!important;}
-/* body .onscroll-menu li{color: #222222;} */
-/* body .onscroll-menu li:hover{color: #a67a68!important;} */
 body .menu-contanier{display: none;}
 body .logo1{color: #222222;font-size: 40px;}
 body .onscroll-icons{color:#222222;}
@@ -280,8 +278,12 @@ body .theme-button {cursor: pointer;
 
     /* TESTIMONIAL */
     body .testimonial-contanier{max-width: 1202px;margin: 0 auto; padding-left: 15px;padding-right: 15px;background-color: #f5f5f5;}
-   body .monial-body{padding: 60px 0;}
-    body .testimonial-header{text-align: center;}
+    body .monial-body{padding: 60px 0;}
+    body .testimonial-header-text{font-size: 32px; line-height: 35px; margin-bottom: 20px;}
+    body .testimonial-body{display: flex; justify-content: space-around;}
+    body .testimonialTexts{text-align: center; padding: 40px 190px; margin: 0 auto;}
+    body .testimonialImages{display: flex;flex-direction: column; margin-right: 100px;}
+    body .testimonialImages img{border-radius: 50%; height: 80px; width: 180px; margin-top: 30px;max-width: 100%;}
     /* MEDIA QUERIES */
 @media screen and (min-width: 2500px) {
                     .flash-contanier{font-size: 40px;}
