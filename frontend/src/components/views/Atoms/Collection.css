@@ -1,0 +1,25 @@
+.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: 284px;
+    left: 6.5%;
+    display: none;
+}
+
+.child:hover {
+    background-color: black;
+}
+
+.parent:hover .heading {
+    display: none;
+}
+
+.parent:hover .child {
+    display: block;
+    cursor: pointer;
+    opacity: 1;
+   
+}
