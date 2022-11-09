@@ -9,7 +9,7 @@ export default function Navbar({ setInner }) {
   const [menu, setMenu] = useState("false");
   useEffect(() => {
     window.addEventListener("click", () => {
-      
+
     });
     window.addEventListener("scroll", () => {
       return window.scrollY > 50 ? setBg(true) : setBg(false);
@@ -24,21 +24,21 @@ export default function Navbar({ setInner }) {
 
   return (
     <>
-      <div
-        className={`${
-          bg ? "header-top " : "header-top  site-header-inner bg-white"
-        }`}
+      <div 
+        className={`${bg ? "nav-other bacg-scroll" : "nav-other bacg-white visible-menu-padding "
+          }`}
       >
         <div className="row ">
           <div className="page-width">
             <div id="_desktop_logo" className="header-logo-section ">
               <h1 className={`${logo ? "logo1" : "logo-header"}`}>
-                Wrist{" "}
+                <span style={{ color: "#232323" }}>Wrist{" "}
+                </span>
                 <span
                   style={{
                     color: "#a67a68",
                     fontFamily: "cursive",
-                    marginLeft: "-19px",
+                    marginLeft: "-15px",
                   }}
                 >
                   Flex
@@ -46,85 +46,54 @@ export default function Navbar({ setInner }) {
               </h1>
             </div>
             <div className="mega-menu">
-              <ul  className={`${
-          bg ? " top-menu onscroll-menu" : "top-menu noscroll-menu"
-        }`}>
-                <li>Home</li>
-                <Link to="/collections" >
-                  <li>Collections</li>
-                </Link>
-                <li>About Us</li>
-              </ul>
+              <ul className={`${bg ? " top-menu onscroll-menu" : "top-menu noscroll-menu "
+                }`}>
+                <Link to="/" ><li>Home</li></Link>
+                <Link to="/collections"> <li>Collections</li></Link>
+                <Link to="/" ><li>About Us</li></Link>
+               </ul>
             </div>
 
             <div className="icon-header">
               <Icon
                 onClick={() => setInner("false")}
                 icon="bi:cart"
-                className={`${
-                  bg ? "icons onscroll-icon" : "icons noscroll-icon"
+                className={`${bg ? "icons icon-nav1 onscroll-icon " : "icons icon-nav1 noscroll-icon"
+                  }`} />
+
+              <Icon icon="bi:person-fill" className={`${bg ? "icons icon-nav1 onscroll-icon" : "icons icon-nav1 noscroll-icon"
                 }`} />
-            
-              <Icon icon="bi:person-fill"className={`${
-          bg ? "icons onscroll-icon" : "icons noscroll-icon"
-        }`} />
             </div>
           </div>
         </div>
       </div>
+      
       {/* on SMALL DEVICE */}
-      <div className="hamburger-menu display-none visible-onscroll ">
+      <div className="hamburger-menu visible-onscroll  ">
         <div onClick={() => setMenu("true")} className="hamburger-contanier">
-          <Icon
-            icon="charm:menu-hamburger"
-            style={{ paddingLeft: "20px", fontSize: "50px" }}
-            className="icons  "
-          />
+          <Icon icon="charm:menu-hamburger"style={{ paddingLeft: "20px", fontSize: "50px" }}className="icons  "/>
         </div>
         <div id="_desktop_logo" className="header-logo-section ">
-          <h1 style={{ color: "#222222" }}>
-            Wrist{" "}
-            <span
-              style={{
-                color: "#a67a68",
-                fontFamily: "cursive",
-                marginLeft: "-12px",
-              }}
-            >
-              Flex
-            </span>
+          <h1 style={{ color: "#222222" }}>Wrist{" "}
+            <span className="span-flex">Flex</span>
           </h1>
         </div>
 
         <div className="icon-header">
-          <Icon icon="bi:cart"  className="icons  onscroll-icons"/>
-          <Icon
-            onClick={() => setInner("false")}
-            icon="bi:person-fill"
-            className="icons  onscroll-icons"
-          />
+          <Icon icon="bi:cart" className="icons  onscroll-icons" />
+          <Icon onClick={() => setInner("false")} icon="bi:person-fill" className="icons  onscroll-icons"/>
         </div>
       </div>
 
-      <div
-        className={`${
-          menu == "false"
-            ? "menu-contanier hidden-menu"
-            : "menu-contanier visible-menu"
-        }`}
-      >
-        <Icon style={{position:"absolute", top:"30", right:"10"}}
-          onClick={() => setMenu("false")}
-          icon="carbon:close"
-          className="icons"/>
-      
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <Link to="/collections">
-            <li>Collections</li>
-          </Link>
-        </ul>
+      <div className={`${menu == "false"? "menu-contanier hidden-menu": "menu-contanier visible-menu"}`}>
+        <Icon className="close-icon icons"onClick={() => setMenu("false")}icon="carbon:close"/>
+          <ul>
+            <li>Home</li>
+            <li>About Us</li>
+            <Link to="/collections">
+              <li>Collections</li>
+            </Link>
+         </ul>
       </div>
     </>
   );
