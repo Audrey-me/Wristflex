@@ -26,7 +26,7 @@ export default function Navbar({ setInner }) {
     <>
       <div
         className={`${
-          bg ? "header-top  visible-onscroll " : "header-top  site-header-inner visible-onscroll1 "}`}>
+          bg ? " visible-onscroll " : "header-top "}`}>
          <div className="row ">
           <div className="page-width">
             <div id="_desktop_logo" className="header-logo-section ">
@@ -50,50 +50,31 @@ export default function Navbar({ setInner }) {
             </div>
             
       {/* on SMALL DEVICE */}
-      <div className="hamburger-menu display-none visible-onscroll ">
+      <div className="hamburger-menu visible-onscroll  ">
         <div onClick={() => setMenu("true")} className="hamburger-contanier">
-          <Icon
-            icon="charm:menu-hamburger"
-            style={{ paddingLeft: "20px", fontSize: "50px" }}
-            className="icons  "
-          />
+          <Icon icon="charm:menu-hamburger"style={{ paddingLeft: "20px", fontSize: "50px" }}className="icons  "/>
         </div>
         <div id="_desktop_logo" className="header-logo-section ">
-          <h1 style={{ color: "#222222" }}>
-            Wrist{" "}
-            <span className="wrist-span">
-              Flex
-            </span>
+          <h1 style={{ color: "#222222" }}>Wrist{" "}
+            <span className="span-flex">Flex</span>
           </h1>
         </div>
 
         <div className="icon-header">
-          <Icon icon="bi:cart"  className="icons  onscroll-icons"/>
-          <Icon
-            onClick={() => setInner("false")}
-            icon="bi:person-fill"
-            className="icons  onscroll-icons"
-          />
+          <Icon icon="bi:cart" className="icons  onscroll-icons" />
+          <Icon onClick={() => setInner("false")} icon="bi:person-fill" className="icons  onscroll-icons"/>
         </div>
       </div>
 
-      <div
-        className={`${
-          menu == "false"
-            ? "menu-contanier hidden-menu"
-            : "menu-contanier visible-menu"
-        }`}
-      >
-        <Icon style={{position:"absolute", top:"30", right:"10"}}
-          onClick={() => setMenu("false")}
-          icon="carbon:close"
-          className="icons"/>
-      
-        <ul>
-            <Link to="/" ><li>Home</li></Link>
-            <Link to="/collections"> <li>Collections</li></Link>
-            <Link to="/" ><li>About Us</li></Link>
-        </ul>
+      <div className={`${menu == "false"? "menu-contanier hidden-menu": "menu-contanier visible-menu"}`}>
+        <Icon className="close-icon icons"onClick={() => setMenu("false")}icon="carbon:close"/>
+          <ul>
+            <Link className="navigation-link" to="/" ><li>Home</li></Link>
+            <Link className="navigation-link" to="/collections"> <li>Collections</li></Link>
+            <Link className="navigation-link" to="/" ><li>About Us</li></Link>
+            <div className="home-btn login-button"> <Link to="/registration/login" >LOGIN</Link></div>
+            <div className="home-btn signup-button"><Link className="signup-link" to="/registration/signup" >SIGNUP</Link></div>
+         </ul>
       </div>
     </>
   );
