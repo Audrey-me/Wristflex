@@ -49,7 +49,7 @@ export default function Navbar({ setInner }) {
               <ul className={`${bg ? " top-menu onscroll-menu" : "top-menu noscroll-menu "
                 }`}>
                 <Link to="/" ><li>Home</li></Link>
-                <Link to="/collections"> <li>Collections</li></Link>
+                <Link to="/collection"> <li>Collections</li></Link>
                 <Link to="/" ><li>About Us</li></Link>
                </ul>
             </div>
@@ -90,7 +90,7 @@ export default function Navbar({ setInner }) {
           <ul>
             <li>Home</li>
             <li>About Us</li>
-            <Link to="/collections">
+            <Link to="/collection">
               <li>Collections</li>
             </Link>
          </ul>

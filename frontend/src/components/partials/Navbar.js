@@ -37,7 +37,7 @@ export default function Navbar({ setInner }) {
                 <div className="mega-menu">
                   <ul className={`${bg ? " top-menu onscroll-menu" : "top-menu noscroll-menu"}`}>
                     <Link to="/" ><li>Home</li></Link>
-                    <Link to="/collections"><li>Collections</li></Link>
+                    <Link to="/collection"><li>Collections</li></Link>
                     <Link to="#" ><li>About Us</li></Link>
                   </ul>
                  </div>
@@ -91,7 +91,7 @@ export default function Navbar({ setInner }) {
       
         <ul>
             <Link to="/" ><li>Home</li></Link>
-            <Link to="/collections"> <li>Collections</li></Link>
+            <Link to="/collection"> <li>Collections</li></Link>
             <Link to="/" ><li>About Us</li></Link>
         </ul>
       </div>
