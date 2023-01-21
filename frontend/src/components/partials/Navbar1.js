@@ -88,11 +88,11 @@ export default function Navbar({ setInner }) {
       <div className={`${menu == "false"? "menu-contanier hidden-menu": "menu-contanier visible-menu"}`}>
         <Icon className="close-icon icons"onClick={() => setMenu("false")}icon="carbon:close"/>
           <ul>
-            <li>Home</li>
-            <li>About Us</li>
-            <Link to="/collection">
-              <li>Collections</li>
-            </Link>
+            <Link className="navigation-link" to="/" ><li>Home</li></Link>
+            <Link className="navigation-link" to="/collections"> <li>Collections</li></Link>
+            <Link className="navigation-link" to="/" ><li>About Us</li></Link>
+            <div className="home-btn login-button"> <Link to="/registration/login" >LOGIN</Link></div>
+            <div className="home-btn signup-button"><Link className="signup-link" to="/registration/signup" >SIGNUP</Link></div>
          </ul>
       </div>
     </>
