@@ -7,14 +7,14 @@ import Products from "../Atoms/Products";
 // import Shopbycategories from '../Atoms/Shopbycategories'
 import SpecialProduct from "../Atoms/SpecialProduct";
 import { watch } from "../../../data";
-import Navbar1 from "../../partials/Navbar1";
+import Navbar from "../../partials/Navbar";
 import Footer from "../../partials/Footer";
 
 const Collections = () => {
   const { heading, subtitle1, subtitle2, image } = watch;
   return (
     <div>
-      <Navbar1/>
+      <Navbar/>
       <div className="container mx-auto mt-20">
         <div className="flex lg:gap-[2rem] lg:flex-row flex-col-reverse ">
           <div>
