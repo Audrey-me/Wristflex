@@ -28,4 +28,4 @@ const CountdownDate = () => {
   )
 }
 
-export default CountdownDate
+export default CountdownDate;

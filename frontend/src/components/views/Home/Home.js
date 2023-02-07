@@ -1,25 +1,35 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Footer from "../../partials/Footer"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Swipers from './Swipers';
 import Navbar from '../../partials/Navbar';
 import { ImQuotesLeft } from "react-icons/im";
-import Registration  from '../Registration/Registration';  
-import CountdownDate from '../../partials/CountdownDate';
+import Register from '../Authentication/Register';
 import Brands from '../../partials/Brands';
 import BestSellers from './BestSellers';
+import CountdownDate from "../../partials/CountdownDate"
+import Main from "../../Main"
+import Sidebar from '../../partials/Sidebar';
+
+export default function Home(props) {
+
+  useEffect(()=>{
+    Main("/js/libs/jquery/jquery.min.js")
+    Main("/js/base.js")
+  
+  })
+  
 
 
-export default function Home() {
   const[inner ,setInner] = useState("false")
   const [active, setActive] = useState("slide1")
   return (
-    <>
+    <div className='home-contanier' style={{position:"relative"}}>
     
    
 {/* First Session */}
 <Navbar/>
-<Registration inner={inner} setInner ={setInner}/>
+{/* <Register inner={inner} setInner ={setInner}/> */}
 <Swipers/>
     
    
@@ -43,6 +53,8 @@ export default function Home() {
         </div>
   
     </section>
+
+    <Sidebar/>
 
   {/* Best Sellers */}
   <div className='seller-contanier'>
@@ -208,7 +220,7 @@ export default function Home() {
 
 {/* Footer */}
 <Footer/>
-</>
+</div>
   )
 }
 
