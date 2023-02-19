@@ -34,7 +34,9 @@ const ProductSlider = () => {
                 return (
                   <div key={index} className='w-full max-w-[290px] text-center'>
                     <div className="mb-2 relative className='border hover:border-accent rounded-[18px] w-full max-w-[285px] max-h-[292px] flex items-center justify-center  transition">
-                      <img src={product.image.type} alt="images" />
+                       <a href={`/product/${product._id}`}>
+                        <img src={product.image.type} alt="images" />
+                      </a>
                       <div className="flex absolute text-[#fec42d] bottom-1 lg:right-[56px] right-[22px] justify-center items-center cursor-pointer">
                         {/* <AiFillStar />
                         <AiFillStar />

@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { Allproducts } from "../../../data";
 import "./Collection.css";
 import Footer from "../../partials/Footer";
+import Navbar from "../../partials/Navbar1";
 
 const Collections = () => {
   return (
     <>
-      <div className="container mx-auto text-center mt-10">
-        <h1 className="text-[30px] font-semibold ">Collections</h1>
+      <div className="container mx-auto text-center">
+        <Navbar/>
+        <h1 className="text-[30px] font-semibold mt-10 ">Collections</h1>
         <div className="lg:grid grid-cols-2 text-center hidden gap-x-5 md:grid-cols-3 lg:grid-cols-4 lg:gap-[30px] mt-10">
           {Allproducts.map((items, index) => {
             return (

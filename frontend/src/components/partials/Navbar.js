@@ -36,7 +36,7 @@ export default function Navbar({ setInner }) {
             <div className="mega-menu">
               <ul className="top-menu">
                 <Link className ="nav_link" to="/"><li>Home</li></Link>
-                <Link className ="nav_link" to="/collections"><li>Collections</li></Link>
+                <Link className ="nav_link" to="/collection"><li>Collections</li></Link>
                 <Link className ="nav_link" to="/"><li>About Us</li> </Link>
               </ul>
             </div>
@@ -71,7 +71,7 @@ export default function Navbar({ setInner }) {
         <ul className="top-menu menu_mobile">
           <Link className ="nav_link" to="/"><li>Home</li></Link>
           <Link className ="nav_link" to="/"><li>About Us</li></Link>
-          <Link className ="nav_link" to="/collections"><li>Collections</li></Link>
+          <Link className ="nav_link" to="/collection"><li>Collections</li></Link>
         </ul>
       </div>
     </>
