@@ -1,7 +1,7 @@
 {
   "name": "wristflex",
   "version": "1.0.0",
-  "description": "Wristflex E-commerce Website",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/audrey2001/Wristflex.git"
   },
-  "author": "johnpaul",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/audrey2001/Wristflex/issues"
@@ -21,8 +21,6 @@
     "colors": "^1.4.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "jquery": "^3.6.3",
-    "moment": "^2.29.4",
     "mongoose": "^6.9.2"
   },
   "devDependencies": {
