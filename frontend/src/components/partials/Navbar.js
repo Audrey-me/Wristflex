@@ -41,7 +41,7 @@ export default function Navbar({ setInner }) {
         <ul className="nav-header-ul">
           <Link className ="nav_link" to="/"><li>Home</li></Link>
           <Link className ="nav_link" to="/"><li>About Us</li></Link>
-          <Link className ="nav_link" to="/collections"><li>Collections</li></Link>
+          <Link className ="nav_link" to="/collection"><li>Collections</li></Link>
         </ul>
       
        <div className="nav-header-icons">
