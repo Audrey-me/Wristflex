@@ -7,9 +7,9 @@ const User = require('../models/userModel')
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password} = req.body
+  const { firstName, lastName, email, password} = req.body
 
-  if (!name || !email || !password) {
+  if (!firstName || !lastName || !email || !password) {
     res.status(400).json({ message : 'Please add all fields'})
   }
 
@@ -26,15 +26,18 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // Create user
   const user = await User.create({
-    name,
+    firstName,
+    lastName,
     email,
     password: hashedPassword,
   })
 
+  
   if (user) {
     res.status(201).json({
       _id: user.id,
-      name: user.name,
+      firstName: user.firstName,
+      lastName: user.lastName,  
       email: user.email,
       token: generateToken(user._id),
     });
@@ -55,7 +58,8 @@ const loginUser = asyncHandler(async (req, res) => {
   if (user && (await bcrypt.compare(password, user.password))) {
     res.json({
       _id: user.id,
-      name: user.name,
+      firstName: user.firstName,
+      lastName: user.lastName,
       email: user.email,
       pic: user.pic,
       token: generateToken(user._id),
@@ -69,11 +73,12 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/me
 // @access  Private
 const getMe = asyncHandler(async (req, res) => {
-  const {_id, name, email} = await User.findById(req.user.id)
+  const {_id, firstName, email} = await User.findById(req.user.id)
 
   res.status(200).json({
     id: _id,
-    name,
+    firstName,
+    lastName,
     email,
   })
 })
@@ -85,7 +90,8 @@ const oldUser = asyncHandler(async (req, res) => {
   if (user) {
     res.json({
       _id: user.id,
-      name: user.name,
+      firstName: user.firstName,
+      lastName: user.lastName,
       email: user.email,
       token: generateToken(user._id),
     })
@@ -98,32 +104,32 @@ const oldUser = asyncHandler(async (req, res) => {
 })
 
 
-const updateUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id);
+// const updateUserProfile = asyncHandler(async (req, res) => {
+//   const user = await User.findById(req.user._id);
 
-  if (user) {
-    user.name = req.body.name || user.name;
-    user.email = req.body.email || user.email;
-    user.pic = req.body.pic || user.pic;
-    if (req.body.password) {
-      user.password = req.body.password;
-    }
+//   if (user) {
+//     user.name = req.body.name || user.name;
+//     user.email = req.body.email || user.email;
+//     user.pic = req.body.pic || user.pic;
+//     if (req.body.password) {
+//       user.password = req.body.password;
+//     }
 
-    const updatedUser = await user.save();
+//     const updatedUser = await user.save();
 
-    res.json({
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      pic: updatedUser.pic,
-      isAdmin: updatedUser.isAdmin,
-      token: generateToken(updatedUser._id),
-    });
-  } else {
-    res.status(404);
-    res.status(400).json({ message : 'User not Found'})
-  }
-});
+//     res.json({
+//       _id: updatedUser._id,
+//       name: updatedUser.name,
+//       email: updatedUser.email,
+//       pic: updatedUser.pic,
+//       isAdmin: updatedUser.isAdmin,
+//       token: generateToken(updatedUser._id),
+//     });
+//   } else {
+//     res.status(404);
+//     res.status(400).json({ message : 'User not Found'})
+//   }
+// });
 
 
 
@@ -139,5 +145,5 @@ module.exports = {
   loginUser,
   getMe,
   oldUser,
-  updateUserProfile,
+  // updateUserProfile,
 };
