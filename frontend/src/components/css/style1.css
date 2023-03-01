@@ -202,7 +202,7 @@ body .nav-header .nav-header-logos .nav-logo .flex-logo{color: #a67a68 ;font-fam
 body .nav-header .nav-header-logos .white-logo{color: #ffff; }
 body .nav-header .nav-header-logos .black-logo {color: #000;}
 
-body .nav-header .is-sticky{position: fixed;top: 0;left: 0;right: 0;width: 100%;z-index: 999999999;box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);transition: 0.4s;animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;-webkit-backdrop-filter: blur(20px);backdrop-filter: blur(20px); display: flex;justify-content: space-between;align-items: center;height: 90px; background-color: #ffffff;padding-top: 0px;}
+body .nav-header .is-sticky{position: fixed;top: 0;left: 0;right: 0;width: 100%;z-index: 999999999;box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);transition: 0.4s;animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;-webkit-backdrop-filter: blur(20px);backdrop-filter: blur(20px); display: flex;justify-content: space-between;align-items: center;height: 65px; background-color: #ffffff;padding-top: 0px;}
 body .nav-header .is-sticky .nav-header-icons{display: flex;margin-right: 50px;justify-content: space-between;font-size: 30px;column-gap: 30px; }
 body .nav-header .is-sticky .nav-header-icons .icons{cursor: pointer;}
 body .nav-header .is-sticky .nav-header-icons .icons:hover{color: #a67a68;}
