@@ -2,6 +2,7 @@ import React from "react";
 import "../../css/style1.css"
 import Footer from "../../partials/Footer";
 import Navbar from "../../partials/Navbar";
+import { Link } from "react-router-dom";
 
 
 
@@ -29,7 +30,9 @@ const Register = () => {
                   <input type="password" name="customer[password]" id="CustomerEmail" autoComplete="email" autoCorrect="off" autoCapitalize="off" placeholder="Password" />
                 </div>
                 <button className="signin-btn flash-button">Create</button>
-                <p className='forgot' style={{textAlign :"center"}} data-action="ishi-panel" aria-controls="#ishi-register-panel"> Already have an account?</p>
+                <Link to='/registration/login'>
+                  <p className='forgot' style={{textAlign :"center"}} data-action="ishi-panel" aria-controls="#ishi-register-panel"> Already have an account?</p>
+                </Link>
               </form>
           </div>
         </div>
