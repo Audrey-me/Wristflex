@@ -24,7 +24,7 @@ const ProductSlider = () => {
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log("slide change")}
       grabCursor={true}
-      className="productSlider min-h-[900px]"
+      className="productSlider min-h-[1100px]"
     >
       {pages.map((page, index) => {
         return (

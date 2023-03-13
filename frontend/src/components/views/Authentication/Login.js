@@ -1,31 +1,103 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import Footer from "../../partials/Footer";
 import { Link } from "react-router-dom";
-import Navbar from '../../partials/Navbar';
-import "../../css/style1.css"
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Navbar from "../../partials/Navbar";
+import "../../css/style1.css";
+import { useAuthStore } from "../../../store";
+import Spinner from "./Spinner";
 
 
 const Login = () => {
- 
-    return (
-      <div >
-        <Navbar/>
-         <div className="login_contanier">
-            <div className ="login_form_container">
-             <h2 className="create-account">Login</h2>
-             <form method="post" action="/account/login" id="customer_login" className="customer_login" auto-charset="UTF-8" >
-                <div className="field">
-                  <input type="email" name="customer[email]" id="CustomerEmail" autoComplete="email" autoCorrect="off" autoCapitalize="off" placeholder="Email" /> </div>
-                <div className="field">
-                  <input type="password" name="customer[email]" id="CustomerEmail" autoComplete="email" autoCorrect="off" autoCapitalize="off" placeholder="Password" /></div>
-                <Link to= "/registration/reset_password"><p className="forgot">Forgot your password?</p></Link> 
-                <Link to = "/registration/login"> <button className="signin-btn flash-button">Sign in</button></Link>
-                <Link to="/registration/register"><p className='forgot' style={{ textAlign: "center" }} data-action="ishi-panel" aria-controls="#ishi-register-panel"> Create account</p></Link>
-             </form>
-          </div>
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const login = useAuthStore((state) => state.login);
+  const error = useAuthStore((state) => state.error);
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const isLoading = useAuthStore((state) => state.isLoading);
+  const user = useAuthStore((state) => state.user);
+
+  const navigate = useNavigate();
+  const {email, password} = formData
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  
+
+    if (isLoggedIn || user) {
+      navigate("/");
+    }
+  });
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  if (isLoading) {
+    return <Spinner />
+  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    login(email, password);
+  };
+
+  return (
+    <div>
+      <Navbar />
+      <div className="login_contanier">
+        <div className="login_form_container">
+          <h2 className="create-account">Login</h2>
+          <form
+            onSubmit={handleSubmit}
+            id="customer_login"
+            className="customer_login"
+           
+          >
+            <div className="field">
+              <input
+                type="email"
+                value={email}
+                name="email"
+                onChange={onChange}
+                placeholder="Email"
+              />
+            </div>
+            <div className="field">
+              <input
+                type="password"
+                value={password}
+                name="password"
+                onChange={onChange}
+                placeholder="Password"
+              />
+            </div>
+            <Link to="/registration/reset_password">
+              <p className="forgot">Forgot your password?</p>
+            </Link>
+            <button type="submit" className="signin-btn flash-button">Sign in</button>
+         
+            <Link to="/registration/register">
+              <p
+                className="forgot"
+                style={{ textAlign: "center" }}
+              >
+                Create account
+              </p>
+            </Link>
+          </form>
         </div>
-        <Footer/>
-     </div>
-    ) }
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
 export default Login;
