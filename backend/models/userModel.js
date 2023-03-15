@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    firstName: {
+    firstname: {
       type: String,
       required: [true, "Please add a name"],
     },
-    lastName: {
+    lastname: {
       type: String,
       required: [true, "Please add a name"],
     },
@@ -19,9 +19,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please provide a password'],
     },
-    fileName: {
-      type: String,
-    },
   },
   {
     timestamps: true,
@@ -29,4 +26,4 @@ const userSchema = new mongoose.Schema(
 );
 
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model('User', userSchema);
