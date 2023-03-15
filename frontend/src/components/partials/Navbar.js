@@ -27,37 +27,47 @@ export default function Navbar({ setInner }) {
   });
 
   
+  function openPeople(){
+  let open = document.querySelector('.open')
+    document.querySelector('.dropdown-list').classList.toggle(open)
+    console.log(open)
+  }
   return (
     <>
     <header className="nav-header">
       <nav style={{paddingBottom:"10px"}}className={`${bg ? "is-sticky" : "top-nav"}`}>
         <div className="nav-header-logos">
-          <Icon icon="charm:menu-hamburger" className="icons hamburger-icon "/>
-          <h1 className={`${logo ? "nav-logo black-logo" : "nav-logo white-logo"}`}>Wrist{" "}
-            <span className="flex-logo">Flex</span>
+          <Icon icon="charm:menu-hamburger" className="icons hamburger-icon"/>
+          {/* <img style={{height:'20px', width:'20px', marginLeft:"10px"}} alt="logo-img" src="images/favicon.ico"/> */}
+
+          <Link className ="nav_link" to="/"> 
+            <h1 className={`${logo ? "nav-logo black-logo" : "nav-logo white-logo"}`}>Wrist{" "}
+              <span className="flex-logo">Flex</span>
           </h1>
+          </Link>
         </div>
       
         <ul className="nav-header-ul">
-          <Link className ="nav_link" to="/"><li>Home</li></Link>
-          <Link className ="nav_link" to="/"><li>About Us</li></Link>
+          <Link className ="nav_link" to="/about"><li>About Us</li></Link>
           <Link className ="nav_link" to="/collection"><li>Collections</li></Link>
+          <Link className ="nav_link" to="/contact-us"><li>Contact Us</li></Link>
         </ul>
       
        <div className="nav-header-icons">
-          <Icon icon="bi:cart"className="icons"/>
-          <Icon icon="bi:person-fill" className="person-icon icons" />
+        <Icon icon="bi:person-fill" className="person-icon icons" onClick={openPeople} />
+        <Icon icon="bi:cart"className="icons" />
+        <p className="cart-status">Your cart is currently empty.</p>
        </div>
        
       </nav>
-      <ul className="dropdown-list userinfo arrow">
+      <ul className="dropdown-list" >
                 <li>
                   <a className="arrow_link" href="/dashboard/profile">
                     <span className ="pull-left">Profile</span> <i className="pull-right fa fa-user"></i>
                   </a>
                 </li>                
                 <li>
-                  <a className="arrow_link" href="/admin/logout/">
+                  <a className="arrow_link" href="/registration/login">
                     <span className="pull-left">Sign Out</span> <i className="pull-right fa fa-sign-out"></i>
                   </a>
                 </li>

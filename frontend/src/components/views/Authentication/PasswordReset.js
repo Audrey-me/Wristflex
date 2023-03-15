@@ -13,7 +13,7 @@ const PasswordReset = () => {
               <input type="email" name="customer[email]" id="CustomerEmail" autoComplete="email" autoCorrect="off" autoCapitalize="off" placeholder="Email" />
             </div>
             <button style={{ marginTop: "30px",textAlign:"center" }} className="signin-btn flash-button">Submit</button>
-            <p  className='forgot' style={{ textAlign: "center" }} data-action="ishi-panel" aria-controls="#ishi-register-panel"> Cancel</p>
+            <p  className='forgot' style={{ textAlign: "center" }} ><a className="arrow_link" href="/registration/login"> Cancel</a></p>
           </form>
         </div>
         <Footer/>

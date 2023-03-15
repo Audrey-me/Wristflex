@@ -19,7 +19,7 @@ const Login = () => {
                 <div className="field">
                   <input type="password" name="customer[email]" id="CustomerEmail" autoComplete="email" autoCorrect="off" autoCapitalize="off" placeholder="Password" /></div>
                 <Link to= "/registration/reset_password"><p className="forgot">Forgot your password?</p></Link> 
-                <Link to = "/registration/login"> <button className="signin-btn flash-button">Sign in</button></Link>
+                <button className="signin-btn flash-button">Sign in</button>
                 <Link to="/registration/register"><p className='forgot' style={{ textAlign: "center" }} data-action="ishi-panel" aria-controls="#ishi-register-panel"> Create account</p></Link>
              </form>
           </div>

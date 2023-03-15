@@ -90,7 +90,7 @@ export default function Navbar({ setInner }) {
           <ul>
             <Link className="navigation-link" to="/" ><li>Home</li></Link>
             <Link className="navigation-link" to="/collection"> <li>Collections</li></Link>
-            <Link className="navigation-link" to="/" ><li>About Us</li></Link>
+            <Link className="navigation-link" to="/about" ><li>About Us</li></Link>
             <div className="home-btn login-button"> <Link to="/registration/login" >LOGIN</Link></div>
             <div className="home-btn signup-button"><Link className="signup-link" to="/registration/signup" >SIGNUP</Link></div>
          </ul>
