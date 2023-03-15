@@ -18,7 +18,7 @@ const Login = () => {
   const error = useAuthStore((state) => state.error);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const isLoading = useAuthStore((state) => state.isLoading);
-  const user = useAuthStore((state) => state.user);
+  const user = JSON.parse(localStorage.getItem("user"))
 
   const navigate = useNavigate();
   const {email, password} = formData
@@ -29,7 +29,7 @@ const Login = () => {
     }
   
 
-    if (isLoggedIn || user) {
+    if (user) {
       navigate("/");
     }
   });
@@ -44,6 +44,7 @@ const Login = () => {
   if (isLoading) {
     return <Spinner />
   }
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     login(email, password);

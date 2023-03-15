@@ -26,7 +26,7 @@ const Register = () => {
   const error = useAuthStore((state) => state.error);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const isLoading = useAuthStore((state) => state.isLoading);
-  const user = useAuthStore((state) => state.user);
+  const user = JSON.parse(localStorage.getItem("user"))
 
 
   const handleSubmit = async (event) => {

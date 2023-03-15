@@ -6,9 +6,9 @@ import axios from "axios";
 export const useAuthStore = create(
   devtools(
     immer((set) => ({
-      isLoggedIn: false,
+      isLoggedIn: [],
       isLoading: false,
-      user: null,
+      user: [],
       error: null,
       login: async (email, password) => {
         try {
@@ -20,9 +20,10 @@ export const useAuthStore = create(
             set({
               isLoggedIn: true,
               error: null,
-              user: response.data,
               isLoading: true,
+              user: response.data
             });
+            localStorage.setItem("user",JSON.stringify(response.data))
           } else {
             const { error } = await response.json();
             set({ error });
@@ -30,7 +31,10 @@ export const useAuthStore = create(
         } catch (error) {
           set({ isLoggedIn: false, error });
         }
+
+       
       },
+
       signup: async (firstname, lastname, email, password) => {
         try {
           const response = await axios.post(
@@ -38,7 +42,8 @@ export const useAuthStore = create(
             { firstname, lastname, email, password }
           );
           if (response) {
-            set({ isLoggedIn: true, isLoading: true, user: response.data, error: null });
+            set({ isLoggedIn: true, user: response.data, isLoading: true, error: null });
+            localStorage.setItem("user",JSON.stringify(response.data))
           } else {
             const { error } = await response.json();
             set({ error });
@@ -47,7 +52,10 @@ export const useAuthStore = create(
           set({ isLoggedIn: false, error: error.message });
         }
       },
-      logout: () => set({ isLoggedIn: false }),
+      logout: () => {
+       set({user: null, isLoading:false, isLoggedIn: false});
+       localStorage.removeItem("user");
+      }, 
     }))
   )
 );
