@@ -42,6 +42,7 @@ export const useAuthStore = create(
             { firstname, lastname, email, password }
           );
           if (response) {
+            // const[isloggedin, setisloggedin]
             set({ isLoggedIn: true, user: response.data, isLoading: true, error: null });
             localStorage.setItem("user",JSON.stringify(response.data))
           } else {
