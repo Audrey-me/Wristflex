@@ -7,13 +7,16 @@ import ProductScreen from "./components/views/Atoms/ProductScreen";
 import Login from "./components/views/Authentication/Login";
 import Register from "./components/views/Authentication/Register";
 import PasswordReset from "./components/views/Authentication/PasswordReset";
-
+import About from "./components/views/About";
+import ContactUs from "./components/views/ContactUs";
 function App() {
   return (
     <>
       <Routes>
         <Route exact path="/" index element={<Home />} />
+        <Route exact path="/about" index element={<About />} />
         <Route exact path="/collection" element={<Collections />} />
+        <Route exact path="/contact-us" element={<ContactUs />} />
         <Route exact path="/collections" element={<Collection />} />
         <Route exact path="/registration/login" element={<Login/>} />
         <Route exact path="/registration/register" element={<Register />} />

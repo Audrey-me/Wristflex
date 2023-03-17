@@ -10,15 +10,13 @@ export default function Navbar({ setInner }) {
   const [bg, setBg] = useState(false);
   const [logo, setLogo] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const[isCartOpen, setIsCartOpen] = useState(false);
   const error = useAuthStore((state) => state.error);
   const logout = useAuthStore((state) => state.logout);
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
 
   useEffect(() => {
-    // window.addEventListener("click", () => {
-    //   setInner("");
-    // });
     window.addEventListener("scroll", () => {
       return window.scrollY > 150 ? setBg(true) : setBg(false);
     });
@@ -32,17 +30,16 @@ export default function Navbar({ setInner }) {
 
   },[setBg, error,navigate, user ]);
 
+function togleCart(){
+  setIsCartOpen(!isCartOpen)
+  }
 
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", () => {
-  //     return window.scrollY > 50 ? setLogo(true) : setLogo(false);
-  //   });
-  // });
 
   function toggleDropdown() {
-    setIsOpen(!isOpen);
-  }
+   setIsOpen(!isOpen)
+    }
+    
+
 
   return (
     <>
@@ -56,24 +53,20 @@ export default function Navbar({ setInner }) {
               icon="charm:menu-hamburger"
               className="icons hamburger-icon "
             />
-            <h1
-              className={`${
-                bg ? "nav-logo text-[black] black-logo" : "nav-logo white-logo"
-              }`}
-            >
-              Wrist <span className="flex-logo">Flex</span>
+            <h1 className={`${bg ? "nav-logo text-[black] black-logo" : "nav-logo white-logo"}`}>
+                <a href="/">Wrist <span className="flex-logo">Flex</span></a>
             </h1>
           </div>
 
           <ul className="nav-header-ul">
-            <Link className="nav_link" to="/">
-              <li>Home</li>
-            </Link>
-            <Link className="nav_link" to="/">
+            <Link className="nav_link" to="/about">
               <li>About Us</li>
             </Link>
             <Link className="nav_link" to="/collection">
               <li>Collections</li>
+            </Link>
+            <Link className="nav_link" to="/contact-us">
+              <li>Contact Us</li>
             </Link>
           </ul>
 
@@ -102,9 +95,16 @@ export default function Navbar({ setInner }) {
                     </button>
                   </div>
 
+                  {isCartOpen && (
+                    <div className="dropdown-list userinfo arrow">
+                      <p style={{padding: "0px 10px"}}>Cart is currently empty</p>
+                    </div>
+                  )}
+
+
                   {isOpen && (
                     <div
-                      className="origin-top-right absolute z-10 text-[14px] right-0  w-[8rem] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      className="dropdown-list userinfo arrow"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="menu-button"
@@ -119,7 +119,7 @@ export default function Navbar({ setInner }) {
                           Account
                         </Link>
                         <button
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 sign-out-btn"
                           onClick={logout}
                         >
                           Logout
@@ -132,7 +132,7 @@ export default function Navbar({ setInner }) {
             ) : (
               <>
               <div className="flex items-center">
-                <Icon icon="bi:cart" className="icons" />
+                <Icon icon="bi:cart" className="icons" onClick={togleCart} />
                 <div className="relative inline-block text-left">
                   <div>
                     <button
@@ -150,10 +150,18 @@ export default function Navbar({ setInner }) {
                       <Icon icon="bi:person-fill" width={28} className="person-icon icons" />
                     </button>
                   </div>
+                  
+                  {isCartOpen && (
+                    <div className="dropdown-list userinfo arrow">
+                      <p style={{padding: "0px 10px"}}>Cart is currently empty</p>
+                    </div>
+                  )}
+
+
 
                   {isOpen && (
                     <div
-                      className="origin-top-right absolute z-10 text-[14px] right-0  w-[8rem] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      className="dropdown-list userinfo arrow"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="menu-button"
@@ -186,20 +194,9 @@ export default function Navbar({ setInner }) {
             )}
           </div>
         </nav>
-        <ul className="dropdown-list userinfo arrow">
-          <li>
-            <a className="arrow_link" href="/dashboard/profile">
-              <span className="pull-left">Profile</span>{" "}
-              <i className="pull-right fa fa-user"></i>
-            </a>
-          </li>
-          <li>
-            <a className="arrow_link" href="/admin/logout/">
-              <span className="pull-left">Sign Out</span>{" "}
-              <i className="pull-right fa fa-sign-out"></i>
-            </a>
-          </li>
-        </ul>
+        {/* <ul className="dropdown-list">
+          
+        </ul> */}
       </header>
     </>
   );
