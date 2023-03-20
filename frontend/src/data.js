@@ -329,6 +329,43 @@ export const Allproducts = [
   },
 ];
 
+export const relatedproducts = [
+  {
+    _id: "1",
+    image: <Product1 />,
+    title: "Around Unisex Watch",
+    price: "$80.00",
+    oldprice: "$85.00",
+    rating: 4.5,
+    numReviews: 12,
+  },
+  {
+    _id: "2",
+    image: <Product2 />,
+    title: "Aviator Frame Watch",
+    price: "$80.00",
+    rating: 4,
+    numReviews: 8,
+  },
+  {
+    _id: "3",
+    image: <Product3 />,
+    title: "Aviator Unisex Watch",
+    price: "$80.00",
+    rating: 3,
+    numReviews: 12,
+  },
+  {
+    _id: "4",
+    image: <Product4 />,
+    title: "Cat Hand Watch",
+    price: "$80.00",
+    oldprice: "$60.00",
+    rating: 5,
+    numReviews: 12,
+  },
+]
+
 export const newproducts = [
   {
     _id: "1",

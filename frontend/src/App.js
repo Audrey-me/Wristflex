@@ -9,6 +9,7 @@ import Register from "./components/views/Authentication/Register";
 import PasswordReset from "./components/views/Authentication/PasswordReset";
 import About from "./components/views/About";
 import ContactUs from "./components/views/ContactUs";
+import Welcome from "./components/views/Authentication/Welcome";
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/registration/register" element={<Register />} />
         <Route exact path="/registration/reset_password" element={<PasswordReset/>} />
         <Route exact path="/product/:id" element={<ProductScreen />} />
+        <Route exact path="/confirm/:confirmationCode" element={<Welcome/>} />
       </Routes>
     </>
   );

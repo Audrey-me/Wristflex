@@ -31,3 +31,12 @@ select {
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}

@@ -1,5 +1,6 @@
 const path = require('path');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const express = require('express')
 const dotenv = require('dotenv').config()
 const port = process.env.PORT || 5000
@@ -12,6 +13,10 @@ connectDB();
 
 
 const app = express()
+
+if(process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
 
 app.use(cors());
 

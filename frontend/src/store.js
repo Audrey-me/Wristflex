@@ -21,9 +21,9 @@ export const useAuthStore = create(
               isLoggedIn: true,
               error: null,
               isLoading: true,
-              user: response.data
+              user: response.data,
             });
-            localStorage.setItem("user",JSON.stringify(response.data))
+            localStorage.setItem("user", JSON.stringify(response.data));
           } else {
             const { error } = await response.json();
             set({ error });
@@ -31,8 +31,6 @@ export const useAuthStore = create(
         } catch (error) {
           set({ isLoggedIn: false, error });
         }
-
-       
       },
 
       signup: async (firstname, lastname, email, password) => {
@@ -43,8 +41,13 @@ export const useAuthStore = create(
           );
           if (response) {
             // const[isloggedin, setisloggedin]
-            set({ isLoggedIn: true, user: response.data, isLoading: true, error: null });
-            localStorage.setItem("user",JSON.stringify(response.data))
+            set({
+              isLoggedIn: true,
+              user: response.data,
+              isLoading: true,
+              error: null,
+            });
+            localStorage.setItem("user", JSON.stringify(response.data));
           } else {
             const { error } = await response.json();
             set({ error });
@@ -54,9 +57,9 @@ export const useAuthStore = create(
         }
       },
       logout: () => {
-       set({user: null, isLoading:false, isLoggedIn: false});
-       localStorage.removeItem("user");
-      }, 
+        set({ user: null, isLoading: false, isLoggedIn: false });
+        localStorage.removeItem("user");
+      },
     }))
   )
 );
