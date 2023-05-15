@@ -21,9 +21,9 @@ export const useAuthStore = create(
               isLoggedIn: true,
               error: null,
               isLoading: true,
-              user: response.data
+              user: response.data,
             });
-            localStorage.setItem("user",JSON.stringify(response.data))
+            localStorage.setItem("user", JSON.stringify(response.data));
           } else {
             const { error } = await response.json();
             set({ error });
@@ -31,8 +31,6 @@ export const useAuthStore = create(
         } catch (error) {
           set({ isLoggedIn: false, error });
         }
-
-       
       },
 
       signup: async (firstname, lastname, email, password) => {
@@ -43,8 +41,13 @@ export const useAuthStore = create(
           );
           if (response) {
             // const[isloggedin, setisloggedin]
-            set({ isLoggedIn: true, user: response.data, isLoading: true, error: null });
-            localStorage.setItem("user",JSON.stringify(response.data))
+            set({
+              isLoggedIn: true,
+              user: response.data,
+              isLoading: true,
+              error: null,
+            });
+            localStorage.setItem("user", JSON.stringify(response.data));
           } else {
             const { error } = await response.json();
             set({ error });
@@ -54,9 +57,113 @@ export const useAuthStore = create(
         }
       },
       logout: () => {
-       set({user: null, isLoading:false, isLoggedIn: false});
-       localStorage.removeItem("user");
-      }, 
+        set({ user: null, isLoading: false, isLoggedIn: false });
+        localStorage.removeItem("user");
+      },
     }))
   )
 );
+
+export const useCartStore = create((set) => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || {
+    products: [],
+    cartCount: 0,
+  };
+
+  return {
+    products: cart.products,
+    cartCount: cart.products.length,
+
+    addToCart: (product) => {
+      set((state) => {
+        const updatedProducts = state.products.map((p) => {
+          if (p._id === product._id) {
+            return {
+              ...p,
+              quantity: p.quantity + 1,
+            };
+          }
+          return p;
+        });
+
+        const existingProduct = updatedProducts.find(
+          (p) => p._id === product._id
+        );
+
+        if (!existingProduct) {
+          updatedProducts.push({ ...product, quantity: 1 });
+        }
+
+        const cartCount = updatedProducts.length;
+
+        localStorage.setItem(
+          "cart",
+          JSON.stringify({ products: updatedProducts, cartCount })
+        );
+
+        return { products: updatedProducts, cartCount };
+      });
+    },
+    removeFromCart: (product) => {
+      set((state) => {
+        const updatedProducts = state.products.map((p) => {
+          if (p._id === product._id && p.quantity > 0) {
+            return {
+              ...p,
+              quantity: p.quantity - 1,
+            };
+          }
+          return p;
+        });
+
+        const filteredProducts = updatedProducts.filter((p) => p.quantity > 0);
+        const cartCount = filteredProducts.length;
+
+        localStorage.setItem(
+          "cart",
+          JSON.stringify({ products: filteredProducts, cartCount })
+        );
+
+        return { products: filteredProducts, cartCount };
+      });
+    },
+
+    clearCart: () => {
+      localStorage.removeItem("cart");
+      set({ products: [], cartCount: 0 });
+    },
+
+    increaseQuantity: (product) => {
+      set((state) => {
+        const updatedProducts = state.products.map((p) => {
+          if (p._id === product._id) {
+            return { ...p, quantity: p.quantity + 1 };
+          }
+          return p;
+        });
+        const cartCount = updatedProducts.length;
+        localStorage.setItem(
+          "cart",
+          JSON.stringify({ products: updatedProducts, cartCount })
+        );
+        return { cart: { products: updatedProducts, cartCount: state.cartCount } };
+      });
+    },
+    decreaseQuantity: (product) => {
+      set((state) => {
+        const updatedProducts = state.products.map((p) => {
+          if (p._id === product._id && product.quantity > 0) {
+            return { ...p, quantity: p.quantity - 1 };
+          }
+          return p;
+        });
+        localStorage.setItem(
+          "cart",
+          JSON.stringify({ products: updatedProducts, cartCount: state.cartCount })
+        );
+        return { cart: { products: updatedProducts, cartCount: state.cartCount } };
+      });
+    },
+  };
+});
+

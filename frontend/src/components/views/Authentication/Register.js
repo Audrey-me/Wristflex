@@ -49,6 +49,7 @@ const Register = () => {
     }
 
     if (isLoggedIn || user) {
+      toast.success("Logged in successfully!");
       navigate("/");
     }
     console.log(isLoggedIn)

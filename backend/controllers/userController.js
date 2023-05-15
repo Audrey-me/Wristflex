@@ -1,7 +1,10 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const asyncHandler = require("express-async-handler");
+const {sendConfirmationEmail} = require("../utils/sendEmail")
 const User = require("../models/userModel");
+
+const secret = "secret";
 
 // @desc    Register new user
 // @route   POST /api/users
@@ -13,6 +16,8 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400).json({ message: "Please add all fields" });
   }
 
+  const token = jwt.sign({ email: req.body.email }, secret);
+
   // Check if user exists
   const userExists = await User.findOne({ email });
 
@@ -20,21 +25,22 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400).json({ message: "User already exists" });
   }
 
-//   // Generate a salt
-// const saltRounds = 10;
-// const salt = bcrypt.genSaltSync(saltRounds);
+  //   // Generate a salt
+  // const saltRounds = 10;
+  // const salt = bcrypt.genSaltSync(saltRounds);
 
-// // Hash a password
-// const hashedPassword = bcrypt.hashSync(password, salt);
+  // // Hash a password
+  // const hashedPassword = bcrypt.hashSync(password, salt);
 
-// console.log(hashedPassword);
+  // console.log(hashedPassword);
 
   // Create user
   const user = await User.create({
     firstname,
     lastname,
     email,
-    password
+    password,
+    confirmationCode: token,
   });
 
   if (user) {
@@ -43,12 +49,46 @@ const registerUser = asyncHandler(async (req, res) => {
       firstname: user.firstname,
       lastname: user.lastname,
       email: user.email,
+      confirmationCode: user.confirmationCode,
       token: generateToken(user._id),
+      message: "User was registered successfully! Please check your email",
     });
+    user.save((err) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+    
+      sendConfirmationEmail(user.firstname, user.email, user.confirmationCode);
+    });
+    
   } else {
     res.status(400).json({ message: "Invalid User Data" });
   }
+
 });
+
+
+// const verifyUser = asyncHandler( async (req, res) => {
+//   User.findOne({
+//     confirmationCode: req.params.confirmationCode,
+//   })
+//     .then((user) => {
+//       if (!user) {
+//         return res.status(404).send({ message: "User Not found." });
+//       } 
+//       user.status = "Active";
+//       res.status(404).send({ message: "Login successful" });
+
+//       user.save((err) => {
+//         if (err) {
+//           res.status(500).send({ message: err });
+//           return;
+//         }
+//       });
+//     })
+//     .catch((e) => console.log("error", e));
+// });
 
 // @desc    Authenticate a user
 // @route   POST /api/users/login
@@ -59,7 +99,13 @@ const loginUser = asyncHandler(async (req, res) => {
   // Check for user email
   const user = await User.findOne({ email });
 
-  if (user && (await(password, user.password))) {
+  // if (user.status != "Active") {
+  //   return res.status(401).send({
+  //     message: "Pending Account. Please Verify Your Email!",
+  //   });
+  // }
+
+  if (user && (await (password, user.password))) {
     res.json({
       _id: user.id,
       firstname: user.firstname,
@@ -144,5 +190,6 @@ module.exports = {
   loginUser,
   getMe,
   oldUser,
+  // verifyUser,
   // updateUserProfile,
 };

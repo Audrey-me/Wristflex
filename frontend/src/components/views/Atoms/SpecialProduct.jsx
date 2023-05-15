@@ -4,10 +4,10 @@ import { specialproducts } from '../../../data';
 
 const SpecialProduct = () => {
   return (
-    <div className="lg:w-[17.5rem] border-separate mt-4 border-spacing-4 border">
+    <div className="lg:w-[17.5rem] border-separate mt-4 mb-8 border-spacing-4 border">
       <div className="bg-accent/20">
         <tr>
-          <th className="font-[100] text-[16px]">Special Products</th>
+          <th className="font-[600] text-[16px]">Special Products</th>
         </tr>
       </div>
       <div className="mx-auto">
