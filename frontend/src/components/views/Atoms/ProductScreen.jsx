@@ -1,9 +1,10 @@
 import { Allproducts } from "../../../data";
+import { useEffect, useState } from 'react';
+import axios from "axios";
 import Icon1 from "../../partials/images/icon1.webp";
 import Icon2 from "../../partials/images/icon2.webp";
 import Icon3 from "../../partials/images/icon3.webp";
 import Icon4 from "../../partials/images/icon4.webp";
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../partials/Navbar";
 import { AiFillStar } from "react-icons/ai";
@@ -17,7 +18,7 @@ import { relatedproducts } from "../../../data";
 import { Link } from "react-router-dom";
 import Footer from '../../partials/Footer'
 
-const ProductScreen = () => {
+const ProductScreen = ({products}) => {
   const [count, setCount] = useState(0);
   const [selectedButton, setSelectedButton] = useState("");
   const [selected, setSelected] = useState("followers");
@@ -50,8 +51,14 @@ const ProductScreen = () => {
     }
   };
 
+
+
   const { id } = useParams();
-  const product = Allproducts.find((p) => p._id === id);
+  const product = products.find((p) => p._id === id);
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <Navbar />
@@ -59,8 +66,8 @@ const ProductScreen = () => {
         <div className="flex md:flex-row flex-col lg:mt-[4rem] xl:mt-10 lg:px-0 px-[0.9rem] mt-[6rem] gap-4">
           <div>
             <img
-              src={product.image.type}
-              alt=""
+              src={product.prodImage}
+              alt="images"
               className="w-[35rem] border "
             />
           </div>
@@ -68,7 +75,7 @@ const ProductScreen = () => {
           {/* second flex */}
 
           <div>
-            <h1 className="text-[25px]">{product.title}</h1>
+            <h1 className="text-[25px]">{product.prodName}</h1>
             <div className="flex mt-2 mb-2 items-center gap-2 ">
               <div className="flex text-[#fec42d]">
                 <AiFillStar />
@@ -94,7 +101,7 @@ const ProductScreen = () => {
                 {product.oldprice}
               </p>
               <p className="text-[25px] text-black font-semibold">
-                {product.price}
+                ${product.prodPrice}.00
               </p>
             </div>
             <div className="mt-4">

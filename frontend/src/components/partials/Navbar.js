@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import "../css/style1.css";
 import { useAuthStore } from "../../store";
+import {useCartStore}  from "../../store";
 import { useNavigate } from "react-router-dom";
 import { BiChevronDown } from "react-icons/bi";
+import Cart from "./Cart";
 
 export default function Navbar({ setInner }) {
   const [bg, setBg] = useState(false);
@@ -16,6 +18,11 @@ export default function Navbar({ setInner }) {
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
+
+  const cartCount = useCartStore((state) => state.cartCount);
+
+  
+ 
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -34,7 +41,7 @@ export default function Navbar({ setInner }) {
     // }
   }, [setBg, error, navigate, user]);
 
-  function togleCart() {
+  function toggleCart() {
     setIsCartOpen(!isCartOpen);
   }
 
@@ -89,8 +96,10 @@ export default function Navbar({ setInner }) {
           <div className="nav-header-icons">
             {user ? (
               <div className="flex items-center">
-                <Icon icon="bi:cart" className="icons" />
-
+                <div className="relative">
+                  <Icon icon="bi:cart" className="icons" onClick={toggleCart} />
+                  <span className="absolute -top-2 text-white w-6 h-6 border-none border font-bold text-center py-[0.12rem] items-center left-5 text-[12px] bg-red-600 rounded-full">{cartCount}</span>
+                </div>
                 <div
                   className="relative inline-block text-left"
                   ref={dropdownRef}
@@ -117,9 +126,7 @@ export default function Navbar({ setInner }) {
 
                   {isCartOpen && (
                     <div className="dropdown-list userinfo arrow">
-                      <p style={{ padding: "0px 10px" }}>
-                        Cart is currently empty
-                      </p>
+                     <Cart/>
                     </div>
                   )}
 
@@ -153,7 +160,10 @@ export default function Navbar({ setInner }) {
             ) : (
               <>
                 <div className="flex items-center">
-                  <Icon icon="bi:cart" className="icons" onClick={togleCart} />
+                <div className="relative">
+                  <Icon icon="bi:cart" className="icons" onClick={toggleCart} />
+                  <span className="absolute -top-2 text-white w-6 h-6 border-none border font-bold text-center py-[0.12rem] items-center left-5 text-[12px] bg-red-600 rounded-full">{cartCount}</span>
+                </div>
                   <div
                     className="relative inline-block text-left"
                     ref={dropdownRef}
@@ -180,11 +190,7 @@ export default function Navbar({ setInner }) {
                     </div>
 
                     {isCartOpen && (
-                      <div className="dropdown-list userinfo arrow">
-                        <p style={{ padding: "0px 10px" }}>
-                          Cart is currently empty
-                        </p>
-                      </div>
+                     <Cart/>
                     )}
 
                     {isOpen && (

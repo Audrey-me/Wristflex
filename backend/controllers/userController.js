@@ -99,11 +99,11 @@ const loginUser = asyncHandler(async (req, res) => {
   // Check for user email
   const user = await User.findOne({ email });
 
-  if (user.status != "Active") {
-    return res.status(401).send({
-      message: "Pending Account. Please Verify Your Email!",
-    });
-  }
+  // if (user.status != "Active") {
+  //   return res.status(401).send({
+  //     message: "Pending Account. Please Verify Your Email!",
+  //   });
+  // }
 
   if (user && (await (password, user.password))) {
     res.json({

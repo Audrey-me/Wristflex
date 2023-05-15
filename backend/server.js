@@ -2,6 +2,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const express = require('express')
+const forgotPasswordRoute = require('./routes/forgotPassword');
+const productRoute = require('./routes/productRoute');
 const dotenv = require('dotenv').config()
 const port = process.env.PORT || 5000
 const connectDB = require('./config/db');
@@ -26,8 +28,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-
+app.use("/api/wristflex/products", productRoute)
 app.use('/api/wristflex', require('./routes/userRoutes'))
+app.use('/api/wristflex/password-reset', forgotPasswordRoute)
 
 // Serve frontend
 if (process.env.NODE_ENV === 'production') {

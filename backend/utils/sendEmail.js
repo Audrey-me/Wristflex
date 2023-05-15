@@ -7,6 +7,8 @@ const transport = nodemailer.createTransport({
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD,
+    clientId: process.env.EMAIL_CLIENTID,
+    clientSecret: process.env.EMAIL_CLIENTSECRET
   },
 });
 
@@ -15,11 +17,23 @@ module.exports.sendConfirmationEmail = (firstname, email, confirmationCode) => {
     .sendMail({
       from: process.env.EMAIL_USER,
       to: email,
-      subject: "Please confirm your account",
-      html: `<h1>Email Confirmation</h1>
+      subject: "Welcome to Wristflex",
+      html: `<h1>We are delighted to have you</h1>
         <h2>Hello ${firstname}</h2>
-        <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
+        <p>Thank you for subscribing.</p>
         </div>`,
     })
     .catch((err) => console.log(err));
 };
+
+module.exports.sendResetPasswordEmail = (email, subject, text) => {
+  transport.sendMail({
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: subject,
+    text: text,
+  })
+  .catch((err) => console.log(err), "email not sent");
+
+  
+}
