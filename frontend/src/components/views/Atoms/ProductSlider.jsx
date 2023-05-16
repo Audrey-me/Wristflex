@@ -1,6 +1,7 @@
 import { Pagination, Navigation } from "swiper";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { products } from "../../../data";
 import { Link } from "react-router-dom";
 import "./Collection.css";
@@ -26,14 +27,8 @@ const ProductSlider = () => {
 
   const handleAddToCart = (product) => {
     addToCart(product);
+    toast.success("Added to cart!");
   };
-  // const addToCart = useCartStore((state) => state.addToCart);
-  // const existingProductIndex = useCartStore((state) => state.cart.existingProductIndex);
-  // const cart = useCartStore((state) => state.cart);
-
-  // const handleAddToCart = () => {
-  //   addToCart(existingProductIndex, 1);
-  // };
   useEffect(() => {
     const fetchProductList = async () => {
       try {
@@ -77,6 +72,7 @@ const ProductSlider = () => {
                         alt="images"
                       />
                     </Link>
+                    
 
                     <button onClick={() => handleAddToCart(product)} className="px-8  py-2 bg-[#a67a68] text-[15px] uppercase rounded-full text-white font-semibold  child-product">
                       Add to cart

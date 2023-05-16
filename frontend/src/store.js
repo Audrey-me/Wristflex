@@ -64,15 +64,15 @@ export const useAuthStore = create(
   )
 );
 
-
-
-
 export const useCartStore = create((set) => {
-  const cart = JSON.parse(localStorage.getItem("cart")) || { products: [], cartCount: 0 };
+  const cart = JSON.parse(localStorage.getItem("cart")) || {
+    products: [],
+    cartCount: 0,
+  };
 
   return {
     products: cart.products,
-    cartCount: cart.cartCount,
+    cartCount: cart.products.length,
 
     addToCart: (product) => {
       set((state) => {
@@ -86,27 +86,84 @@ export const useCartStore = create((set) => {
           return p;
         });
 
-        const existingProduct = updatedProducts.find((p) => p._id === product._id);
+        const existingProduct = updatedProducts.find(
+          (p) => p._id === product._id
+        );
 
         if (!existingProduct) {
           updatedProducts.push({ ...product, quantity: 1 });
         }
 
-        const cartCount = updatedProducts.reduce((total, p) => total + p.quantity, 0);
+        const cartCount = updatedProducts.length;
 
-        localStorage.setItem("cart", JSON.stringify({ products: updatedProducts, cartCount }));
+        localStorage.setItem(
+          "cart",
+          JSON.stringify({ products: updatedProducts, cartCount })
+        );
 
         return { products: updatedProducts, cartCount };
+      });
+    },
+    removeFromCart: (product) => {
+      set((state) => {
+        const updatedProducts = state.products.map((p) => {
+          if (p._id === product._id && p.quantity > 0) {
+            return {
+              ...p,
+              quantity: p.quantity - 1,
+            };
+          }
+          return p;
+        });
+
+        const filteredProducts = updatedProducts.filter((p) => p.quantity > 0);
+        const cartCount = filteredProducts.length;
+
+        localStorage.setItem(
+          "cart",
+          JSON.stringify({ products: filteredProducts, cartCount })
+        );
+
+        return { products: filteredProducts, cartCount };
       });
     },
 
     clearCart: () => {
       localStorage.removeItem("cart");
       set({ products: [], cartCount: 0 });
-    }
+    },
+
+    increaseQuantity: (product) => {
+      set((state) => {
+        const updatedProducts = state.products.map((p) => {
+          if (p._id === product._id) {
+            return { ...p, quantity: p.quantity + 1 };
+          }
+          return p;
+        });
+        const cartCount = updatedProducts.length;
+        localStorage.setItem(
+          "cart",
+          JSON.stringify({ products: updatedProducts, cartCount })
+        );
+        return { cart: { products: updatedProducts, cartCount: state.cartCount } };
+      });
+    },
+    decreaseQuantity: (product) => {
+      set((state) => {
+        const updatedProducts = state.products.map((p) => {
+          if (p._id === product._id && product.quantity > 0) {
+            return { ...p, quantity: p.quantity - 1 };
+          }
+          return p;
+        });
+        localStorage.setItem(
+          "cart",
+          JSON.stringify({ products: updatedProducts, cartCount: state.cartCount })
+        );
+        return { cart: { products: updatedProducts, cartCount: state.cartCount } };
+      });
+    },
   };
 });
-
-
-
 

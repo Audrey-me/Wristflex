@@ -1,5 +1,5 @@
 import { Allproducts } from "../../../data";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Icon1 from "../../partials/images/icon1.webp";
 import Icon2 from "../../partials/images/icon2.webp";
@@ -16,14 +16,32 @@ import Giftvoucher from "../../partials/images/giftvoucher.png";
 import Reviewsection from "./Reviews/Reviewsection";
 import { relatedproducts } from "../../../data";
 import { Link } from "react-router-dom";
-import Footer from '../../partials/Footer'
+import Footer from "../../partials/Footer";
+import { useCartStore, useQuantityStore } from "../../../store";
+import { toast } from "react-toastify";
 
-const ProductScreen = ({products}) => {
+const ProductScreen = ({ products}) => {
   const [count, setCount] = useState(0);
   const [selectedButton, setSelectedButton] = useState("");
   const [selected, setSelected] = useState("followers");
   const [reviewsVisible, setReviewsVisible] = useState(false);
   const [descriptionVisible, setDescriptionVisible] = useState(true);
+  const {removeFromCart  } = useCartStore();
+  const cartCount = useCartStore((state) => state.cartCount);
+  // const [quantity, setQuantity] = useState(InitialQuantity );
+  // const { updateQuantity } = useCartStore();
+  const addToCart = useCartStore((state) => state.addToCart);
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    toast.success("Added to cart!");
+  };
+
+  
+
+
+  const decrementQuantity = (product) => {
+    removeFromCart(product);
+  };
 
   const showReviews = () => {
     setReviewsVisible(true);
@@ -40,18 +58,6 @@ const ProductScreen = ({products}) => {
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
   };
-
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
-
-  const decrementCount = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    }
-  };
-
-
 
   const { id } = useParams();
   const product = products.find((p) => p._id === id);
@@ -149,7 +155,7 @@ const ProductScreen = ({products}) => {
               <div className="flex mt-2 justify-around px-2 w-[10rem]  border rounded-[30px] border-solid items-center">
                 <button
                   className=" text-[22px] font-thin text-black"
-                  onClick={incrementCount}
+                  onClick={() => handleAddToCart(product)}
                 >
                   +
                 </button>
@@ -157,13 +163,13 @@ const ProductScreen = ({products}) => {
                 <input
                   className=" appearance-none font-[400] text-[18px]  border-1 focus:outline-none rounded-lg w-[2rem] text-center"
                   type="number"
-                  value={count}
-                  onChange={(e) => setCount(parseInt(e.target.value))}
+                  value={isNaN(cartCount) ? 0 : cartCount}
+                  readOnly
                 />
                 <span className="border-r h-[50px]"></span>
                 <button
                   className="text-[22px] font-thin text-black"
-                  onClick={decrementCount}
+                  onClick={() => decrementQuantity(product)}
                 >
                   -
                 </button>
@@ -173,7 +179,10 @@ const ProductScreen = ({products}) => {
             {/* // add to cart and pay now */}
 
             <div className="flex mt-6 text-center gap-2">
-              <button className="bg-[#a67a68] text-white md:text-[16px] text-[14px] font-bold py-3 md:px-4 px-10  rounded-[30px]  md:w-48  lg:w-64">
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="bg-[#a67a68] text-white md:text-[16px] text-[14px] font-bold py-3 md:px-4 px-10  rounded-[30px]  md:w-48  lg:w-64"
+              >
                 ADD TO CART
               </button>
               <button className="bg-black  text-white md:text-[16px] text-[14px] font-bold py-3 md:px-4 px-10 rounded-[30px]  md:w-48 lg:w-64">
@@ -324,7 +333,9 @@ const ProductScreen = ({products}) => {
         </div>
 
         <div className="text-center mb-8">
-          <h1 className="lg:text-[40px] mt-6 md:text-[32px] font-semibold text-[30px]">Related Products .</h1>
+          <h1 className="lg:text-[40px] mt-6 md:text-[32px] font-semibold text-[30px]">
+            Related Products .
+          </h1>
           <div className="grid grid-cols-2 gap-x-5 md:grid-cols-3 lg:grid-cols-4 lg:gap-[30px] ">
             {relatedproducts.map((relatedProduct, index) => {
               return (
@@ -383,11 +394,10 @@ const ProductScreen = ({products}) => {
                 </div>
               );
             })}
-
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
