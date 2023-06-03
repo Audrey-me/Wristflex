@@ -30,7 +30,7 @@ const Login = () => {
   
 
     if (user) {
-      toast.error("Check your email")
+      toast.success("Welcome")
       navigate("/");
     }
   });

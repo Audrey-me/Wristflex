@@ -132,38 +132,6 @@ export const useCartStore = create((set) => {
       localStorage.removeItem("cart");
       set({ products: [], cartCount: 0 });
     },
-
-    increaseQuantity: (product) => {
-      set((state) => {
-        const updatedProducts = state.products.map((p) => {
-          if (p._id === product._id) {
-            return { ...p, quantity: p.quantity + 1 };
-          }
-          return p;
-        });
-        const cartCount = updatedProducts.length;
-        localStorage.setItem(
-          "cart",
-          JSON.stringify({ products: updatedProducts, cartCount })
-        );
-        return { cart: { products: updatedProducts, cartCount: state.cartCount } };
-      });
-    },
-    decreaseQuantity: (product) => {
-      set((state) => {
-        const updatedProducts = state.products.map((p) => {
-          if (p._id === product._id && product.quantity > 0) {
-            return { ...p, quantity: p.quantity - 1 };
-          }
-          return p;
-        });
-        localStorage.setItem(
-          "cart",
-          JSON.stringify({ products: updatedProducts, cartCount: state.cartCount })
-        );
-        return { cart: { products: updatedProducts, cartCount: state.cartCount } };
-      });
-    },
   };
 });
 

@@ -17,7 +17,7 @@ import Reviewsection from "./Reviews/Reviewsection";
 import { relatedproducts } from "../../../data";
 import { Link } from "react-router-dom";
 import Footer from "../../partials/Footer";
-import { useCartStore, useQuantityStore } from "../../../store";
+import { useCartStore} from "../../../store";
 import { toast } from "react-toastify";
 
 const ProductScreen = ({ products}) => {
@@ -60,7 +60,7 @@ const ProductScreen = ({ products}) => {
   };
 
   const { id } = useParams();
-  const product = products.find((p) => p._id === id);
+  const product = products && products.find((p) => p._id === id);
   if (!product) {
     return <div>Loading...</div>;
   }
