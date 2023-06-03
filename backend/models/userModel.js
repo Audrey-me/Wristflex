@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    firstname: {
+    user_name: {
       type: String,
       required: [true, "Please add a name"],
     },
@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please add a name"],
     },
-    email: {
+    user_email: {
       type: String,
       required: [true, "Please add an email"],
       unique: true,

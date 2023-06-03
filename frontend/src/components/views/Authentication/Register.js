@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import "../../css/style1.css";
 import Footer from "../../partials/Footer";
 import Navbar from "../../partials/Navbar";
@@ -7,18 +7,19 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../../store";
 import Spinner from "./Spinner";
+import emailjs from '@emailjs/browser';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    firstname: '',
+    user_name: '',
     lastname: '',
-    email: '',
+    user_email: '',
     password: '',
 
   }
   );
 
-  const {firstname, lastname, email, password} = formData;
+  const {user_name, lastname, user_email, password} = formData;
   // const [lastname, setLastName] = useState("");
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
@@ -28,12 +29,20 @@ const Register = () => {
   const isLoading = useAuthStore((state) => state.isLoading);
   const user = JSON.parse(localStorage.getItem("user"))
 
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    signup(firstname, lastname, email, password);
-  };
-
+// the emails
+  const form = useRef();
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    signup(user_name, lastname, user_email, password);
+    emailjs.sendForm('service_06cbrca', 'template_btlzstm', form.current, 'xeG7hE7PKWwAYN6FS')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+        
+      }
+    
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -52,7 +61,7 @@ const Register = () => {
       toast.success("Logged in successfully!");
       navigate("/");
     }
-    console.log(isLoggedIn)
+   
   });
 
   if (isLoading) {
@@ -67,16 +76,17 @@ const Register = () => {
         <div className="login_form_container">
           <h2 className="create-account">Create Account</h2>
           <form
-            onSubmit={handleSubmit}
+           ref={form} 
+            onSubmit={sendEmail}
             id="customer_login"
             className="customer_login"
           >
             <div className="field">
               <input
                 type="text"
-                value={firstname}
+                value={user_name}
                 onChange={onChange}
-                name="firstname"
+                name="user_name"
                 placeholder="First name"
               />
             </div>
@@ -94,9 +104,9 @@ const Register = () => {
             <div className="field">
               <input
                 type="email"
-                value={email}
+                value={user_email}
                 onChange={onChange}
-                name="email"
+                name="user_email"
                 placeholder="Email"
               />
             </div>

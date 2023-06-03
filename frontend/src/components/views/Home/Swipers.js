@@ -1,7 +1,7 @@
 import React,{useRef, useEffect,forwardRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Icon } from '@iconify/react';
-
+import { Link } from "react-router-dom";
 import SwiperCore , {EffectFlip,Navigation, Pagination,Autoplay ,Scrollbar, A11y, Mousewheel, Keyboard } from 'swiper';
 import 'animate.css';
 import Navbar from '../../partials/Navbar';
@@ -41,7 +41,7 @@ export default function Swipers() {
         <div className='flash-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         <span className='break-class'>ed do eiusmod tempor</span> 
         <br /> <span className='break-class'>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</span></div>
-        <button className='flash-button'>SHOP NOW</button>
+        <Link to="/collection"><button className='flash-button'>SHOP NOW</button></Link>
        </div>
        
        </SwiperSlide>

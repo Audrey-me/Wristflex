@@ -3,7 +3,7 @@ import {IoLocationOutline,IoCallOutline} from "react-icons/io5";
 import {AiOutlineMail,AiOutlineDown} from "react-icons/ai"
 import { FaFacebookF,FaTwitter,FaInstagram,FaLinkedinIn} from "react-icons/fa";
 import "../css/style1.css"
-
+import { Link } from "react-router-dom";
 export default function Footer() {
     const [show,setShow] = useState("footer-sub-menus")
 
@@ -40,18 +40,18 @@ export default function Footer() {
             <div className='footer-item'>
             <h2 className='footer-item-header'>Product</h2>
             <ul className='footer-sub-menus child3'>
-               <li>Category</li>
-               <li>About Us</li>
-               <li>Contact Us</li>
-               <li>FAQs</li>
-               <li>Products</li>
+               <Link to= "/"><li>Home</li></Link>
+               <Link to= "/about"><li>About Us</li></Link>
+               <Link to= "/contact-us"><li>Contact Us</li></Link>
+               <Link to="/faqs"><li>FAQs</li></Link>
+               <Link to="/collection"><li>Collections</li></Link>
             </ul>
             </div>
             <div className='footer-item child4'>
             <h2 style={{textAlign:"left"}} className='footer-item-header '>Newsletter</h2>
             <p>Lorem ipsum dolor sit amet, consectetur <br/>adipiscing elit, sed do eiusmod tempo.</p>
             <div className='footer-sub-buttons '>
-                <input type='email' placeholder='Your email'/>
+                <input type='email' placeholder='Your email' href="mailto:kosisochukwuakaeze@gmail.com"/>
                 <button>SUBSCRIBE</button>
             </div>
             <div className='footer-social-icons'>
@@ -123,7 +123,7 @@ export default function Footer() {
             <div><h2>Products </h2> </div>
            <div><AiOutlineDown onClick={btnToggle}/></div>
             <ul className={show}>
-               <li>Category</li>
+               <Link><li>Category</li></Link>
                <li>About Us</li>
                <li>Contact Us</li>
                <li>FAQs</li>
