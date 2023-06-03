@@ -10,7 +10,7 @@ import BestSellers from './BestSellers';
 import CountdownDate from "../../partials/CountdownDate"
 import Main from "../../Main"
 import Sidebar from '../../partials/Sidebar';
-
+import { Link } from "react-router-dom";
 export default function Home(props) {
 
   useEffect(()=>{
@@ -35,19 +35,19 @@ export default function Home(props) {
    
 {/* About Us */}
 <section className="about padding-top-110 padding-bottom-90" id="about">
-        <div className="container about-content">
-            <div className="row">
-                <div className="col-md-5 about-img">
+        <div className="about-content">
+            <div className="row about-sub-row">
+                <div className="col-xl-6 col-lg-7 col-md-12 col-xs-12 about-img">
                 <img className='about-us-image' src='images/about.webp' alt='about-us' />
                   </div>
-                <div className="col-md-7 padding-left-20">
+                <div className="about-image-content col-xl-6 col-lg-5 col-md-12 col-xs-12">
                 <h1 className='testimonial-header'>About Us</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
       labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus commodo viverra maecenas accumsan lacus </p> 
     
     <p>el facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse 
     ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-    <button className='flash-button style-btn'>READ MORE</button>
+    < Link to="/about"><button className='flash-button style-btn'>READ MORE</button></Link>
                  </div>
         </div>
         </div>
@@ -82,7 +82,7 @@ export default function Home(props) {
   </div>
 
   {/* Services Session */}
-  <div className='contanier services-contanier'>
+  <div className='services-contanier'>
       <div className='row services'>
         <div className ="col-sm-7 padding-left-25">
           <div className='left-text left-content'>

@@ -9,11 +9,11 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const schema = Joi.object({ email: Joi.string().email().required() });
+    const schema = Joi.object({ user_email: Joi.string().email().required() });
     const { error } = schema.validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ user_email: req.body.user_email });
     if (!user)
       return res.status(400).send("user with given email doesn't exist");
 
@@ -26,9 +26,9 @@ router.post("/", async (req, res) => {
     }
 
     const link = `${process.env.BASE_URL}/password-reset/${user._id}/${token.token}`;
-    sendResetPasswordEmail(user.email, "Password reset", link);
+    sendResetPasswordEmail(user.user_email, "Password reset", link);
 
-    res.status(200).json({message:user.email});
+    res.status(200).json({message:user.user_email});
   } catch (error) {
     res.send(error);
     console.log(error);
