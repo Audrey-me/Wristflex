@@ -85,25 +85,27 @@ export const useCartStore = create((set) => {
           }
           return p;
         });
-
+    
         const existingProduct = updatedProducts.find(
           (p) => p._id === product._id
         );
-
+    
         if (!existingProduct) {
           updatedProducts.push({ ...product, quantity: 1 });
         }
-
+    
         const cartCount = updatedProducts.length;
-
+        const productIds = updatedProducts.map((p) => p._id); // Store product IDs
+    
         localStorage.setItem(
           "cart",
-          JSON.stringify({ products: updatedProducts, cartCount })
+          JSON.stringify({ ...cart, products: updatedProducts, cartCount, productIds })
         );
-
-        return { products: updatedProducts, cartCount };
+    
+        return { products: updatedProducts, cartCount, productIds };
       });
     },
+    
     removeFromCart: (product) => {
       set((state) => {
         const updatedProducts = state.products.map((p) => {

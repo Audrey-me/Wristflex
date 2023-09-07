@@ -32,7 +32,12 @@ const Login = () => {
     if (user) {
       toast.success("Welcome")
       navigate("/");
-    }
+    } 
+    
+    if (!user) {
+      toast.error("User doesn't exist")
+    } 
+
   });
 
   const onChange = (e) => {

@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cart from "./components/partials/Cart";
 import AddProducts from "./components/views/molecules/AddProducts";
+import Checkouts from "./components/partials/Checkouts";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route exact path="/registration/register" element={<Register />} />
         <Route exact path="/registration/reset_password" element={<PasswordReset/>} />
         <Route exact path="/product/:id" element={<ProductScreen products={products} />} />
+        <Route path="/checkout/:productIds" element={<Checkouts/>} />
         <Route exact path="/confirm/:confirmationCode" element={<Welcome/>} />
       </Routes>
       <ToastContainer/>
