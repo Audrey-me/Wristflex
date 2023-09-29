@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Cart from "./components/partials/Cart";
 import AddProducts from "./components/views/molecules/AddProducts";
 import Checkouts from "./components/partials/Checkouts";
+import Account from "./components/partials/Account";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route exact path="/collection" element={<Collections />} />
         <Route exact path="/contact-us" element={<ContactUs />} />
         <Route exact path="/collections" element={<Collection  />} />
+         <Route exact path="/account" element={<Account  />} />
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/addproducts" element={<AddProducts />} />
         <Route exact path="/registration/login" element={<Login/>} />

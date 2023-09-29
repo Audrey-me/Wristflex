@@ -59,7 +59,7 @@ const registerUser = asyncHandler(async (req, res) => {
         return;
       }
     
-      sendConfirmationEmail(user.firstname, user.email, user.confirmationCode);
+      // sendConfirmationEmail(user.firstname, user.email, user.confirmationCode);
     });
     
   } else {
@@ -122,14 +122,19 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/me
 // @access  Private
 const getMe = asyncHandler(async (req, res) => {
-  const { _id, firstname, lastname, email } = await User.findById(req.user.id);
+  try {
 
-  res.status(200).json({
-    id: _id,
-    firstname,
-    lastname,
-    email,
-  });
+    const { id } = req.query;
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.status(200).json({ user });
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    return res.status(500).json({ message: "An error occurred" });
+  }
 });
 
 // get oldUser id
@@ -151,32 +156,29 @@ const oldUser = asyncHandler(async (req, res) => {
   }
 });
 
-// const updateUserProfile = asyncHandler(async (req, res) => {
-//   const user = await User.findById(req.user._id);
+const updateUserProfile = asyncHandler(async (req, res) => {
+  const { firstname,lastname, email } = req.body;
+  try {
+    
+    const { id } = req.query;
+    const user = await User.findById(id);
 
-//   if (user) {
-//     user.name = req.body.name || user.name;
-//     user.email = req.body.email || user.email;
-//     user.pic = req.body.pic || user.pic;
-//     if (req.body.password) {
-//       user.password = req.body.password;
-//     }
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-//     const updatedUser = await user.save();
+    user.firstname = firstname;
+    user.lastname = lastname;
+    user.email = email;
+    
+    await user.save();
 
-//     res.json({
-//       _id: updatedUser._id,
-//       name: updatedUser.name,
-//       email: updatedUser.email,
-//       pic: updatedUser.pic,
-//       isAdmin: updatedUser.isAdmin,
-//       token: generateToken(updatedUser._id),
-//     });
-//   } else {
-//     res.status(404);
-//     res.status(400).json({ message : 'User not Found'})
-//   }
-// });
+    return res.status(200).json({ message: "User updated", user });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return res.status(500).json({ message: "An error occurred" });
+  }
+});
 
 // Generate JWT
 const generateToken = (id) => {
@@ -191,5 +193,5 @@ module.exports = {
   getMe,
   oldUser,
   // verifyUser,
-  // updateUserProfile,
+  updateUserProfile,
 };
