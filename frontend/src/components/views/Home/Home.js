@@ -4,13 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Swipers from './Swipers';
 import Navbar from '../../partials/Navbar';
 import { ImQuotesLeft } from "react-icons/im";
-import Register from '../Authentication/Register';
 import Brands from '../../partials/Brands';
-import BestSellers from './BestSellers';
 import CountdownDate from "../../partials/CountdownDate"
 import Main from "../../Main"
 import Sidebar from '../../partials/Sidebar';
 import { Link } from "react-router-dom";
+import FeaturedList from '../../partials/FeaturedList';
+import NewArrivals from '../../partials/NewArrivals';
+import BestSellers from '../../partials/BestSellers';
+
+
+
+
 export default function Home(props) {
 
   useEffect(()=>{
@@ -19,53 +24,77 @@ export default function Home(props) {
   
   })
   
-
-
-  const[inner ,setInner] = useState("false")
+  // const[inner ,setInner] = useState("false")
   const [active, setActive] = useState("slide1")
+  const [activeOption, setActiveOption] = useState('Featured');
+  const [loading, setLoading] = useState(true);
+
+  const handleOptionClick = (option) => {
+    setLoading(true)
+    setActiveOption(option);
+  };
+
   return (
     <div className='home-contanier' style={{position:"relative"}}>
     
    
-{/* First Session */}
-<Navbar/>
-{/* <Register inner={inner} setInner ={setInner}/> */}
-<Swipers/>
+  {/* First Session */}
+  <Navbar/>
+  {/* <Register inner={inner} setInner ={setInner}/> */}
+  <Swipers/>
+      
     
-   
-{/* About Us */}
-<section className="about padding-top-110 padding-bottom-90" id="about">
-        <div className="about-content">
+  {/* About Us */}
+        <section className="about padding-top-110 padding-bottom-90" id="about">
+          <div className="about-content">
             <div className="row about-sub-row">
-                <div className="col-xl-6 col-lg-7 col-md-12 col-xs-12 about-img">
+              <div className="col-xl-6 col-lg-7 col-md-12 col-xs-12 about-img">
                 <img className='about-us-image' src='images/about.webp' alt='about-us' />
-                  </div>
-                <div className="about-image-content col-xl-6 col-lg-5 col-md-12 col-xs-12">
+              </div>
+              <div className="about-image-content col-xl-6 col-lg-5 col-md-12 col-xs-12">
                 <h1 className='testimonial-header'>About Us</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-      labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus commodo viverra maecenas accumsan lacus </p> 
-    
-    <p>el facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse 
-    ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-    < Link to="/about"><button className='flash-button style-btn'>READ MORE</button></Link>
-                 </div>
-        </div>
-        </div>
-  
-    </section>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                  labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus commodo viverra maecenas accumsan lacus </p>
 
-    <Sidebar/>
+                <p>el facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                  ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                < Link to="/about"><button className='flash-button style-btn'>READ MORE</button></Link>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+      <Sidebar/>
+      
 
   {/* Best Sellers */}
-  <div className='seller-contanier'>
+    <div className='seller-contanier'>
       <h1 className='testimonial-header'>Shop Best Sellers.</h1>
       <ul className='seller-list'>
-        <li className='seller-option'>Featured</li>
-        <li className='seller-option'>New Arrivals</li>
-        <li className='seller-option'>Best Sellers</li>
+        <li
+          className={`seller-option ${activeOption === 'Featured' ? 'active' : ''}`}
+          onClick={() => handleOptionClick('Featured')}>
+          Featured
+        </li>
+        <li
+          className={`seller-option ${activeOption === 'NewArrivals' ? 'active' : ''}`}
+          onClick={() => handleOptionClick('NewArrivals')}
+        >
+          New Arrivals
+        </li>
+        <li
+          className={`seller-option ${activeOption === 'BestSellers' ? 'active' : ''}`}
+          onClick={() => handleOptionClick('BestSellers')}
+        >
+          Best Sellers
+        </li>
       </ul>
 
-      <BestSellers/>
+      {/* Render the corresponding component based on the active option */}
+      {activeOption === 'Featured' && <FeaturedList />}
+      {activeOption === 'NewArrivals' && <NewArrivals />}
+      {activeOption === 'BestSellers' && <BestSellers />}
     </div>
 
   {/* Time Session */}
@@ -76,7 +105,7 @@ export default function Home(props) {
       <div className="parallax-offer-title">Save Up To 50% Off On First Order From  Entire Store</div>
       <div className="countdowncontainer"><CountdownDate/></div>
       <div className="parallax-offer style-btn">
-        <a href='#' className ="btn theme-button">SHOP NOW</a>
+        <a href='' className ="btn theme-button">SHOP NOW</a>
      </div>
    </div>
   </div>

@@ -133,25 +133,6 @@ export default function Navbar({ setInner }) {
             </ul>
           </div>
 
-          <ul className="nav-header-ul">
-            {/* <Link className="nav_link" to="/">
-              <li>Home</li>
-            </Link> */}
-            <Link className="nav_link" to="/about">
-              <li>About Us</li>
-            </Link>
-            <Link className="nav_link" to="/collection">
-              <li>Collections</li>
-            </Link>
-            <Link className="nav_link" to="/contact-us">
-              <li>Contact Us</li>
-            </Link>
-            <Link className="nav_link" to="/faqs">
-              <li>FAQs</li>
-            </Link>
-          </ul>
-
-
           <div className="nav-header-icons">
             {user ? (
               <div className="flex items-center">
