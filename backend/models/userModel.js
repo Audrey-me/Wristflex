@@ -23,6 +23,9 @@ const userSchema = new mongoose.Schema(
       type: String, 
       unique: true 
     },
+    cartId: {
+      type: String,
+    },
   },
   {
     timestamps: true,

@@ -30,9 +30,14 @@ const Login = () => {
   
 
     if (user) {
-      toast.error("Check your email")
+      toast.success("Welcome")
       navigate("/");
-    }
+    } 
+    
+    if (!user) {
+      toast.error("User doesn't exist")
+    } 
+
   });
 
   const onChange = (e) => {

@@ -14,8 +14,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cart from "./components/partials/Cart";
 import AddProducts from "./components/views/molecules/AddProducts";
+import Checkouts from "./components/partials/Checkouts";
+import Account from "./components/partials/Account";
 import FAQs from "./components/views/FAQs";
 import Profile from "./components/views/account/Profile";
+
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -37,12 +40,14 @@ function App() {
         <Route exact path="/contact-us" element={<ContactUs />} />
         <Route exact path="/faqs" element={<FAQs/>} />
         <Route exact path="/collections" element={<Collection  />} />
+         <Route exact path="/account" element={<Account  />} />
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/addproducts" element={<AddProducts />} />
         <Route exact path="/registration/login" element={<Login/>} />
         <Route exact path="/registration/register" element={<Register />} />
         <Route exact path="/registration/reset_password" element={<PasswordReset/>} />
         <Route exact path="/product/:id" element={<ProductScreen products={products} />} />
+        <Route path="/checkout/:productIds" element={<Checkouts/>} />
         <Route exact path="/confirm/:confirmationCode" element={<Welcome/>} />
       </Routes>
       <ToastContainer/>

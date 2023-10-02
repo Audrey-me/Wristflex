@@ -1,6 +1,4 @@
-import { Allproducts } from "../../../data";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import Icon1 from "../../partials/images/icon1.webp";
 import Icon2 from "../../partials/images/icon2.webp";
 import Icon3 from "../../partials/images/icon3.webp";
@@ -17,16 +15,15 @@ import Reviewsection from "./Reviews/Reviewsection";
 import { relatedproducts } from "../../../data";
 import { Link } from "react-router-dom";
 import Footer from "../../partials/Footer";
-import { useCartStore, useQuantityStore } from "../../../store";
+import { useCartStore } from "../../../store";
 import { toast } from "react-toastify";
 
-const ProductScreen = ({ products}) => {
-  const [count, setCount] = useState(0);
+const ProductScreen = ({ products }) => {
   const [selectedButton, setSelectedButton] = useState("");
   const [selected, setSelected] = useState("followers");
   const [reviewsVisible, setReviewsVisible] = useState(false);
   const [descriptionVisible, setDescriptionVisible] = useState(true);
-  const {removeFromCart  } = useCartStore();
+  const { removeFromCart, productIds } = useCartStore();
   const cartCount = useCartStore((state) => state.cartCount);
   // const [quantity, setQuantity] = useState(InitialQuantity );
   // const { updateQuantity } = useCartStore();
@@ -35,9 +32,6 @@ const ProductScreen = ({ products}) => {
     addToCart(product);
     toast.success("Added to cart!");
   };
-
-  
-
 
   const decrementQuantity = (product) => {
     removeFromCart(product);
@@ -60,7 +54,7 @@ const ProductScreen = ({ products}) => {
   };
 
   const { id } = useParams();
-  const product = products.find((p) => p._id === id);
+  const product = products && products.find((p) => p._id === id);
   if (!product) {
     return <div>Loading...</div>;
   }
@@ -150,7 +144,7 @@ const ProductScreen = ({ products}) => {
             </div>
 
             {/* // quantity */}
-            <div className=" mt-4">
+            {/* <div className=" mt-4">
               <h1 className="text-[14px] text-[#666] font-bold">Quantity</h1>
               <div className="flex mt-2 justify-around px-2 w-[10rem]  border rounded-[30px] border-solid items-center">
                 <button
@@ -163,7 +157,7 @@ const ProductScreen = ({ products}) => {
                 <input
                   className=" appearance-none font-[400] text-[18px]  border-1 focus:outline-none rounded-lg w-[2rem] text-center"
                   type="number"
-                  value={isNaN(cartCount) ? 0 : cartCount}
+                  value={cartCount}
                   readOnly
                 />
                 <span className="border-r h-[50px]"></span>
@@ -174,7 +168,7 @@ const ProductScreen = ({ products}) => {
                   -
                 </button>
               </div>
-            </div>
+            </div> */}
 
             {/* // add to cart and pay now */}
 
@@ -185,9 +179,13 @@ const ProductScreen = ({ products}) => {
               >
                 ADD TO CART
               </button>
-              <button className="bg-black  text-white md:text-[16px] text-[14px] font-bold py-3 md:px-4 px-10 rounded-[30px]  md:w-48 lg:w-64">
-                BUY IT NOW
-              </button>
+              {products.length > 0 && (
+                <Link to={`/checkout/${productIds}`}>
+                  <button className="bg-black  text-white md:text-[16px] text-[14px] font-bold py-3 md:px-4 px-10 rounded-[30px]  md:w-48 lg:w-64">
+                    BUY IT NOW
+                  </button>
+                </Link>
+              )}
             </div>
             {/* // free delivery */}
 

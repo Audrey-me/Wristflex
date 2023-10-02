@@ -85,25 +85,27 @@ export const useCartStore = create((set) => {
           }
           return p;
         });
-
+    
         const existingProduct = updatedProducts.find(
           (p) => p._id === product._id
         );
-
+    
         if (!existingProduct) {
           updatedProducts.push({ ...product, quantity: 1 });
         }
-
+    
         const cartCount = updatedProducts.length;
-
+        const productIds = updatedProducts.map((p) => p._id); // Store product IDs
+    
         localStorage.setItem(
           "cart",
-          JSON.stringify({ products: updatedProducts, cartCount })
+          JSON.stringify({ ...cart, products: updatedProducts, cartCount, productIds })
         );
-
-        return { products: updatedProducts, cartCount };
+    
+        return { products: updatedProducts, cartCount, productIds };
       });
     },
+    
     removeFromCart: (product) => {
       set((state) => {
         const updatedProducts = state.products.map((p) => {
@@ -131,38 +133,6 @@ export const useCartStore = create((set) => {
     clearCart: () => {
       localStorage.removeItem("cart");
       set({ products: [], cartCount: 0 });
-    },
-
-    increaseQuantity: (product) => {
-      set((state) => {
-        const updatedProducts = state.products.map((p) => {
-          if (p._id === product._id) {
-            return { ...p, quantity: p.quantity + 1 };
-          }
-          return p;
-        });
-        const cartCount = updatedProducts.length;
-        localStorage.setItem(
-          "cart",
-          JSON.stringify({ products: updatedProducts, cartCount })
-        );
-        return { cart: { products: updatedProducts, cartCount: state.cartCount } };
-      });
-    },
-    decreaseQuantity: (product) => {
-      set((state) => {
-        const updatedProducts = state.products.map((p) => {
-          if (p._id === product._id && product.quantity > 0) {
-            return { ...p, quantity: p.quantity - 1 };
-          }
-          return p;
-        });
-        localStorage.setItem(
-          "cart",
-          JSON.stringify({ products: updatedProducts, cartCount: state.cartCount })
-        );
-        return { cart: { products: updatedProducts, cartCount: state.cartCount } };
-      });
     },
   };
 });
