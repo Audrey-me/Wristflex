@@ -12,14 +12,14 @@ const transport = nodemailer.createTransport({
   },
 });
 
-module.exports.sendConfirmationEmail = (firstname, email, confirmationCode) => {
+module.exports.sendConfirmationEmail = (user_name, user_email, confirmationCode) => {
   transport
     .sendMail({
       from: process.env.EMAIL_USER,
-      to: email,
+      to: user_email,
       subject: "Welcome to Wristflex",
       html: `<h1>We are delighted to have you</h1>
-        <h2>Hello ${firstname}</h2>
+        <h2>Hello ${user_name}</h2>
         <p>Thank you for subscribing.</p>
         </div>`,
     })

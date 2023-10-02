@@ -10,11 +10,11 @@ export const useAuthStore = create(
       isLoading: false,
       user: [],
       error: null,
-      login: async (email, password) => {
+      login: async (user_email, password) => {
         try {
           const response = await axios.post(
             "http://localhost:5000/api/wristflex/login",
-            { email, password }
+            {user_email, password }
           );
           if (response) {
             set({
@@ -33,11 +33,11 @@ export const useAuthStore = create(
         }
       },
 
-      signup: async (firstname, lastname, email, password) => {
+      signup: async (user_name, lastname, user_email, password) => {
         try {
           const response = await axios.post(
             "http://localhost:5000/api/wristflex/",
-            { firstname, lastname, email, password }
+            { user_name, lastname, user_email, password }
           );
           if (response) {
             // const[isloggedin, setisloggedin]

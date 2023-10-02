@@ -10,7 +10,7 @@ const PasswordReset = () => {
           <p style={{ marginTop: "20px", textAlign:"center" }}>We will send you an email to reset your password</p>
           <form method="post" action="/account/login" id="customer_login" className="customer_login" auto-charset="UTF-8" >
             <div className="field">
-              <input type="email" name="customer[email]" id="CustomerEmail" autoComplete="email" autoCorrect="off" autoCapitalize="off" placeholder="Email" />
+              <input type="email" name="customer[user_email]" id="CustomerEmail" autoComplete="email" autoCorrect="off" autoCapitalize="off" placeholder="Email" />
             </div>
             <button style={{ marginTop: "30px",textAlign:"center" }} className="signin-btn flash-button">Submit</button>
             <p  className='forgot' style={{ textAlign: "center" }} ><a className="arrow_link" href="/registration/login"> Cancel</a></p>

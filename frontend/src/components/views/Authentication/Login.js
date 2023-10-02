@@ -11,7 +11,7 @@ import Spinner from "./Spinner";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
+    user_email: '',
     password: '',
   });
   const login = useAuthStore((state) => state.login);
@@ -21,7 +21,7 @@ const Login = () => {
   const user = JSON.parse(localStorage.getItem("user"))
 
   const navigate = useNavigate();
-  const {email, password} = formData
+  const {user_email, password} = formData
 
   useEffect(() => {
     if (error) {
@@ -53,7 +53,7 @@ const Login = () => {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-    login(email, password);
+    login(user_email, password);
   };
 
   return (
@@ -71,8 +71,8 @@ const Login = () => {
             <div className="field">
               <input
                 type="email"
-                value={email}
-                name="email"
+                value={user_email}
+                name="user_email"
                 onChange={onChange}
                 placeholder="Email"
               />

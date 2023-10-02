@@ -10,16 +10,16 @@ const secret = "secret";
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { firstname, lastname, email, password } = req.body;
+  const { user_name, lastname, user_email, password } = req.body;
 
-  if (!firstname || !lastname || !email || !password) {
+  if (!user_name || !lastname || !user_email || !password) {
     res.status(400).json({ message: "Please add all fields" });
   }
 
-  const token = jwt.sign({ email: req.body.email }, secret);
+  const token = jwt.sign({ user_email: req.body.user_email }, secret);
 
   // Check if user exists
-  const userExists = await User.findOne({ email });
+  const userExists = await User.findOne({ user_email });
 
   if (userExists) {
     res.status(400).json({ message: "User already exists" });
@@ -36,9 +36,9 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // Create user
   const user = await User.create({
-    firstname,
+    user_name,
     lastname,
-    email,
+    user_email,
     password,
     confirmationCode: token,
   });
@@ -46,9 +46,9 @@ const registerUser = asyncHandler(async (req, res) => {
   if (user) {
     res.status(201).json({
       _id: user.id,
-      firstname: user.firstname,
+      user_name: user.user_name,
       lastname: user.lastname,
-      email: user.email,
+      user_email: user.email,
       confirmationCode: user.confirmationCode,
       token: generateToken(user._id),
       message: "User was registered successfully! Please check your email",
@@ -59,7 +59,6 @@ const registerUser = asyncHandler(async (req, res) => {
         return;
       }
     
-      // sendConfirmationEmail(user.firstname, user.email, user.confirmationCode);
     });
     
   } else {
@@ -94,10 +93,10 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users/login
 // @access  Public
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { user_email, password } = req.body;
 
   // Check for user email
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ user_email });
 
   // if (user.status != "Active") {
   //   return res.status(401).send({
@@ -108,9 +107,9 @@ const loginUser = asyncHandler(async (req, res) => {
   if (user && (await (password, user.password))) {
     res.json({
       _id: user.id,
-      firstname: user.firstname,
+      user_name: user.user_name,
       lastname: user.lastname,
-      email: user.email,
+      user_email: user.user_email,
       token: generateToken(user._id),
     });
   } else {
@@ -135,18 +134,27 @@ const getMe = asyncHandler(async (req, res) => {
     console.error("Error fetching user:", error);
     return res.status(500).json({ message: "An error occurred" });
   }
+
+  const { _id, user_name, lastname, user_email } = await User.findById(req.user.id);
+
+  res.status(200).json({
+    id: _id,
+    user_name,
+    lastname,
+    user_email,
+  });
 });
 
 // get oldUser id
 const oldUser = asyncHandler(async (req, res) => {
-  const { email } = req.body;
-  const user = await User.findOne({ email });
+  const { user_email } = req.body;
+  const user = await User.findOne({ user_email });
   if (user) {
     res.json({
       _id: user.id,
-      firstname: user.firstname,
+      user_name: user.user_name,
       lastname: user.lastname,
-      email: user.email,
+      user_email: user.user_email,
       token: generateToken(user._id),
     });
   } else if (!user) {

@@ -16,6 +16,8 @@ import Cart from "./components/partials/Cart";
 import AddProducts from "./components/views/molecules/AddProducts";
 import Checkouts from "./components/partials/Checkouts";
 import Account from "./components/partials/Account";
+import FAQs from "./components/views/FAQs";
+import Profile from "./components/views/account/Profile";
 
 
 function App() {
@@ -34,7 +36,9 @@ function App() {
         <Route exact path="/" index element={<Home />} />
         <Route exact path="/about" index element={<About />} />
         <Route exact path="/collection" element={<Collections />} />
+        <Route exact path="/profile"  element={<Profile />} />
         <Route exact path="/contact-us" element={<ContactUs />} />
+        <Route exact path="/faqs" element={<FAQs/>} />
         <Route exact path="/collections" element={<Collection  />} />
          <Route exact path="/account" element={<Account  />} />
         <Route exact path="/cart" element={<Cart />} />

@@ -90,7 +90,6 @@ export default function Navbar({ setInner }) {
               </Link>
             </h1>
           </div>
-
           {/* Mobile Navigation */}
           <div
             className={`${
@@ -134,6 +133,25 @@ export default function Navbar({ setInner }) {
             </ul>
           </div>
 
+          <ul className="nav-header-ul">
+            {/* <Link className="nav_link" to="/">
+              <li>Home</li>
+            </Link> */}
+            <Link className="nav_link" to="/about">
+              <li>About Us</li>
+            </Link>
+            <Link className="nav_link" to="/collection">
+              <li>Collections</li>
+            </Link>
+            <Link className="nav_link" to="/contact-us">
+              <li>Contact Us</li>
+            </Link>
+            <Link className="nav_link" to="/faqs">
+              <li>FAQs</li>
+            </Link>
+          </ul>
+
+
           <div className="nav-header-icons">
             {user ? (
               <div className="flex items-center">
@@ -160,7 +178,7 @@ export default function Navbar({ setInner }) {
                       aria-haspopup="true"
                       onClick={toggleDropdown}
                     >
-                      Hello, {user.firstname}
+                      Hello, {user.user_name}
                       <span>
                         <BiChevronDown size={20} />
                       </span>
@@ -201,7 +219,10 @@ export default function Navbar({ setInner }) {
                     >
                       <div className="py-1" role="none">
                         <Link
+
                           to="/account"
+                 
+
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                           role="menuitem"
                         >
